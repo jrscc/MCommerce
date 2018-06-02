@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+	<title><ui:insert name="title">Página principal</ui:insert></title>
+</h:head>
+
+<h:body>
+
+	<div id="header">
+		<p:panel columns="1" style="width : 100%; text-align:center" >
+			<h:outputLabel value="Header Aplicação - v8.0" />
+		</p:panel>
+	</div>
+
+	<div id="content">
+		<ui:insert name="content"/>
+	</div>
+
+	<div id="footer">
+		<p:panel columns="1" style="width : 100%; text-align:center" >
+			<h:outputLabel value="Footer MarcosJr Aplicação - v8.0" />
+			<h:outputLabel value="Copyright © 2000 - 2018 www.ecommerce.com.br, TODOS OS DIREITOS RESERVADOS. 
+			Todo o conteúdo do site, todas as fotos, imagens, logotipos, marcas, dizeres, som, software, conjunto imagem, layout, trade dress, 
+			aqui veiculados são de propriedade exclusiva da MJR.COM Internet S.A."/>
+		</p:panel>
+	</div>
+</h:body>
+</html>

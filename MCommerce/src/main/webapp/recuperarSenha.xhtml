@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/WEB-INF/templates/_comum_menu_rodape.xhtml">
+
+	<ui:define name="content">
+	
+		<div align="center" >
+			<h:form id="formLogin">
+					<p:fieldset legend="Recuperar senha" style="margin-right: 35px; margin-left: 35px; margin-top: 15px; margin-bottom: 15px;">
+						<p:panelGrid columns="1" style="text-align: center;">
+							<p:inputText id="inputLogin" placeholder="seu e-mail" />
+							<p:calendar id="dataNascimento" placeholder="data de nascimento"/>
+							<p:commandButton value="enviar e-mail de confirmação" />
+						</p:panelGrid>
+					</p:fieldset>
+			</h:form>
+		</div>
+		
+	</ui:define>
+</ui:composition>
+</html>

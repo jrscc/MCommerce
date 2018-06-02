@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/WEB-INF/templates/_comum_menu_rodape.xhtml">
+
+	<ui:define name="content">
+
+		<div align="center">
+			<h:form id="formLogin">
+				<p:fieldset legend="Cadastro Produto"
+					style="margin-right: 35px; margin-left: 35px; margin-top: 15px; margin-bottom: 15px;">
+					
+				<p:panelGrid columns="2" style="text-align: center;">
+					<p:panelGrid columns="2" style="text-align: left;">
+					
+						<p:outputLabel value="ID: " />
+						<p:outputLabel value="" />
+						<p:inputText id="nomeProduto" placeholder="nome" />
+						<p:inputText id="descricaoProduto" placeholder="descrição" />
+						
+						
+					</p:panelGrid>
+					
+					<p:panelGrid columns="2" style="text-align: left;">
+						<p:inputText id="precoCusto" placeholder="preço custo" />
+						<p:inputText id="precoVenda" placeholder="preço venda" />
+
+						<p:selectOneMenu id="genero">
+							<f:selectItem itemLabel="Selecione o gênero" />
+						</p:selectOneMenu>
+						<p:selectOneMenu id="faixaEtaria">
+							<f:selectItem itemLabel="Selecione a faixa etária" />
+						</p:selectOneMenu>
+					</p:panelGrid>
+						
+					</p:panelGrid>
+				</p:fieldset>
+
+			</h:form>
+		</div>
+
+	</ui:define>
+</ui:composition>
+</html>

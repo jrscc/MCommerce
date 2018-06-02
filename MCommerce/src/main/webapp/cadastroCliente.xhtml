@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/WEB-INF/templates/_comum_menu_rodape.xhtml">
+
+	<ui:define name="content">
+
+		<div align="center">
+			<h:form id="formCadastroCliente">
+				<p:panelGrid columns="3"
+					style="margin-top: 35px; margin-bottom: 35px; margin-left: 35px; margin-rigth: 35px;">
+					<p:fieldset legend="Dados pessoais">
+						<p:panelGrid columns="1" style="text-align: center;">
+							<p:inputText placeholder="nome" size="30" />
+							<p:inputText placeholder="sobrenome" size="30" />
+							<p:inputText placeholder="CPF" size="30" />
+							<p:calendar placeholder="data de nascimento" size="30" />
+							<p:panelGrid columns="2">
+								<p:outputLabel value="sexo:	" />
+								<p:selectOneRadio id="sexo">
+									<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+									<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+								</p:selectOneRadio>
+							</p:panelGrid>
+
+						</p:panelGrid>
+					</p:fieldset>
+					<p:fieldset legend="Endereço" >
+						<p:panelGrid columns="1" style="text-align: center;">
+							<p:panelGrid columns="2" style="text-align: center;">
+								<p:inputText placeholder="rua" size="32" />
+								<p:inputText placeholder="Nº 00" size="4" />
+							</p:panelGrid>
+							<p:panelGrid columns="2" style="text-align: center;">
+							<p:inputText placeholder="bairro" size="29" />
+							<p:inputText placeholder="CEP" size="7" />
+							</p:panelGrid>
+							<p:inputText placeholder="complemento" size="44" />
+							<p:panelGrid columns="2" style="text-align: center;">
+								<p:inputText placeholder="cidade" size="32" />
+								<p:selectOneMenu>
+									<f:selectItem itemLabel="UF"/>
+								</p:selectOneMenu>
+							</p:panelGrid>
+
+						</p:panelGrid>
+					</p:fieldset>
+
+					<p:fieldset legend="Sobre sua conta">
+						<p:panelGrid columns="1" style="text-align: center;">
+							<p:inputText placeholder="seu e-mail" size="30"/>
+							<p:password placeholder="senha" size="30"/>
+							<p:password placeholder="confirmar senha" size="30"/>
+							<p:inputText placeholder="seu telefone" size="30"/>
+							<p:commandButton value="Criar conta" style="width: 300px; height:40px; margin-top:50" icon="fa fa-hand-o-right"/>
+						</p:panelGrid>
+					</p:fieldset>
+				</p:panelGrid>
+			</h:form>
+		</div>
+
+	</ui:define>
+</ui:composition>
+</html>

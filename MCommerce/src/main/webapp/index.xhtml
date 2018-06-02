@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	
+<h:head>
+	<title>MCommerce</title>
+</h:head>
+
+<h:body>
+	<h:form id="formIndex">
+
+		<p:tabMenu activeIndex="#{param.i}">
+			<p:menuitem value="Overview" 
+				icon="ui-icon-star">
+				<f:param name="i" value="0" />
+			</p:menuitem>
+			<p:menuitem value="Demos" 
+				icon="ui-icon-search">
+				<f:param name="i" value="1" />
+			</p:menuitem>
+			<p:menuitem value="Documentation" 
+				icon="ui-icon-document">
+				<f:param name="i" value="2" />
+			</p:menuitem>
+			<p:menuitem value="Support" 
+				icon="ui-icon-wrench">
+				<f:param name="i" value="3" />
+			</p:menuitem>
+			<p:menuitem value="Social" 
+				icon="ui-icon-person">
+				<f:param name="i" value="4" />
+			</p:menuitem>
+		</p:tabMenu>
+
+		<H1>MCommerce</H1>
+		<p:outputLabel value="Password: "/>
+		<p:password feedback="true"></p:password>
+
+	</h:form>
+</h:body>
+
+
+</html>
