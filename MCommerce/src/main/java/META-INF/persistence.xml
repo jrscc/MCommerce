@@ -9,10 +9,10 @@
 
 		 <non-jta-data-source>java:/DACA_MySQL</non-jta-data-source> 
 
-		<class>Model.Cliente</class>
-		<class>Model.Fornecedor</class>
-		<class>Model.Produto</class>
-		<class>Resources.Endereco</class>
+		<class>model.Cliente</class>
+		<class>model.Fornecedor</class>
+		<class>model.Produto</class>
+		<class>model.Endereco</class>
 
 		<properties>
 

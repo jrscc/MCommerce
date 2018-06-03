@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/WEB-INF/templates/_comum_menu_rodape.xhtml">
+
+	<ui:define name="content">
+
+		<p:growl id="idMessages" showDetail="true" autoUpdate="true" severity="info" />
+		<p:messages id="idMessagesErrors" showDetail="true" autoUpdate="true" closable="true" severity="error" />
+
+		<h:form id="formCadastroCliente">
+		<div align="center">
+		<p:panelGrid columns="3"
+					style="margin-top: 35px; margin-bottom: 35px; margin-left: 35px; margin-rigth: 35px;">
+		
+		<p:fieldset legend="Dados da empresa">
+			<p:panelGrid columns="1" style="text-align: center;">
+				<p:inputText id="nomeFantasia" value="#{cadastroFornecedorMB.fornecedor.nomeFantasia}" placeholder="nome fantasia" size="30" required="true"/>
+				<p:inputText id="cnpj" value="#{cadastroFornecedorMB.fornecedor.CNPJ}" placeholder="CNPJ" size="30" required="true"/>
+				<p:inputText id="email" value="#{cadastroFornecedorMB.fornecedor.email}" placeholder="seu e-mail" size="30" required="true"/>
+				<p:inputText id="telefone" value="#{cadastroFornecedorMB.fornecedor.telefone}" placeholder="seu telefone" size="30" required="true"/>
+			</p:panelGrid>
+		</p:fieldset>
+		
+		<p:fieldset legend="Endereço" >
+					<p:panelGrid columns="1" style="text-align: center;">
+						<p:panelGrid columns="2" style="text-align: center;">
+								<p:inputText id="rua" value="#{cadastroFornecedorMB.fornecedor.endereco.rua}"  placeholder="rua" size="32" />
+								<p:inputText  id="numero" value="#{cadastroFornecedorMB.fornecedor.endereco.numero}" placeholder="Nº 00" size="4" />
+							</p:panelGrid>
+							<p:panelGrid columns="2" style="text-align: center;">
+								<p:inputText id="bairro" value="#{cadastroFornecedorMB.fornecedor.endereco.bairro}" placeholder="bairro" size="29" />
+								<p:inputText id="cep" value="#{cadastroFornecedorMB.fornecedor.endereco.CEP}" placeholder="CEP" size="7" />
+							</p:panelGrid>
+								<p:inputText id="complemento" value="#{cadastroFornecedorMB.fornecedor.endereco.complemento}" placeholder="complemento" size="44" />
+							<p:panelGrid columns="2" style="text-align: center;">
+								<p:inputText id="cidade" value="#{cadastroFornecedorMB.fornecedor.endereco.cidade}" placeholder="cidade" size="32" />
+								<p:selectOneMenu id="uf" value="#{cadastroFornecedorMB.fornecedor.endereco.estado}" label="Estado" required="true">
+									<f:selectItem  itemLabel="UF" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
+									<f:selectItems value="#{cadastroFornecedorMB.uf}" var="g" itemLabel="#{g.nome}" itemValue="#{g}" />
+								</p:selectOneMenu>
+						</p:panelGrid>
+
+					</p:panelGrid>
+			</p:fieldset>
+			<p:fieldset legend="Dados pessoais">
+			<p:panelGrid columns="1" style="text-align: center;">
+				<p:inputText id="nome" value="#{cadastroFornecedorMB.fornecedor.nome}" placeholder="nome" size="30" required="true"/>
+				<p:inputText id="sobrenome" value="#{cadastroFornecedorMB.fornecedor.sobrenome}" placeholder="sobrenome" size="30" required="true"/>
+				<p:inputText id="cpf" value="#{cadastroFornecedorMB.fornecedor.CPF}" placeholder="CPF" size="30" required="true"/>
+				<p:commandButton value="Cadastrar fornecedor" action="#{cadastroFornecedorMB.saveFornecedor}" update="@form" 
+								style="width: 300px; height:40px; margin-top:50" icon="fa fa-hand-o-right"/>
+			</p:panelGrid>
+		</p:fieldset>
+			</p:panelGrid>
+			</div>
+			</h:form>
+
+
+
+
+
+
+	</ui:define>
+</ui:composition>
+</html>
