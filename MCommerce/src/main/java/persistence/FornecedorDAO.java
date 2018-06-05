@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
-
 import filters.FornecedorFilter;
 import model.Fornecedor;
 
@@ -71,7 +70,7 @@ public class FornecedorDAO  extends DAO{
 
 		try {
 			
-			String jpql = "SELECT u FROM User u WHERE 1 = 1 ";
+			String jpql = "SELECT f FROM Fornecedor f WHERE 1 = 1 ";
 			
 //			// First name
 //			if (notEmpty(filter.getFirstName())) {
@@ -168,9 +167,9 @@ public class FornecedorDAO  extends DAO{
 		
 	}
 	
-	private boolean notEmpty(Object obj) {
-		return obj != null;
-	}
+//	private boolean notEmpty(Object obj) {
+//		return obj != null;
+//	}
 	
 	private boolean notEmpty(String obj) {
 		return obj != null && !obj.trim().isEmpty();

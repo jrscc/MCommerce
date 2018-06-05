@@ -69,7 +69,7 @@ public class ProdutoDAO extends DAO{
 
 		try {
 			
-			String jpql = "SELECT u FROM User u WHERE 1 = 1 ";
+			String jpql = "SELECT p FROM Produto p WHERE 1 = 1 ";
 			
 //			// First name
 //			if (notEmpty(filter.getFirstName())) {

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/WEB-INF/templates/_comum_menu_rodape.xhtml">
+
+	<ui:define name="content">
+
+		<p:growl id="idMessages" showDetail="true" autoUpdate="true" severity="info" />
+		<p:messages id="idMessagesErrors" showDetail="true" autoUpdate="true" closable="true" severity="error" />
+		
+		<p:fieldset legend="Produtos">
+			<p:dataTable id="dataTableProdutos" var="produto" value="#{gerenciarProdutosMB.produtos}" emptyMessage="Nenhum registro encontrado." 
+					rows="5" 
+					paginator="true" paginatorAlwaysVisible="false"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+				<p:column headerText="ID" width="60">
+					<h:outputText value="#{produto.id}" />
+				</p:column>
+				<p:column headerText="Nome_Produto">
+					<h:outputText value="#{produto.nome}" />
+				</p:column>
+				<p:column headerText="Inf. Adicionais">
+					<h:outputText value="#{produto.informacoesAdicionais}" />
+				</p:column>
+				<p:column headerText="Preço de custo">
+					<h:outputText value="#{produto.precoCusto}" />
+				</p:column>
+				<p:column headerText="Preço de venda">
+					<h:outputText value="#{produto.precoVenda}" />
+				</p:column>
+				<p:column headerText="Gênero">
+					<h:outputText value="#{produto.genero}" />
+				</p:column>
+				<p:column headerText="Faixa etária">
+					<h:outputText value="#{produto.faixaEtaria}" />
+				</p:column>
+				<p:column headerText="Fornecedor">
+					<h:outputText value="#{null}" />
+				</p:column>
+				<p:column headerText="Operations" width="226">
+					<p:button id="editProduto" outcome="cadastroProduto.xhtml" value="Editar" icon="fa fa-edit">
+						<f:param name="produto" value="#{produto.id}" />
+					</p:button>
+					<p:commandButton id="deleteProduto" value="Deletar" icon="fa fa-remove" action="#{gerenciarProdutosMB.delete(produto)}" >
+						<p:confirm header="Confirmação!" message="Quer mesmo deletar '#{produto.nome}'?" icon="ui-icon-alert" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</p:fieldset>
+		<p:confirmDialog id="confirmDialog" global="true" showEffect="fade" hideEffect="fade">
+	        <p:commandButton id="confirmYes" value="Yes" styleClass="ui-confirmdialog-yes" icon="fa fa-remove" />
+	        <p:commandButton id="confirmNo" value="No" styleClass="ui-confirmdialog-no" icon="fa fa-ban" />
+	    </p:confirmDialog>
+
+	</ui:define>
+</ui:composition>
+</html>

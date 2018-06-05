@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/WEB-INF/templates/_comum_menu_rodape.xhtml">
+
+	<ui:define name="content">
+
+		<p:growl id="idMessages" showDetail="true" autoUpdate="true" severity="info" />
+		<p:messages id="idMessagesErrors" showDetail="true" autoUpdate="true" closable="true" severity="error" />
+		
+		<p:fieldset legend="Clientes">
+			<p:dataTable id="dataTableCliente" var="cliente" value="#{gerenciarClientesMB.clientes}" emptyMessage="Nenhum registro encontrado." 
+					rows="5" 
+					paginator="true" paginatorAlwaysVisible="false"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+				<p:column headerText="ID" width="60">
+					<h:outputText value="#{cliente.id}" />
+				</p:column>
+				<p:column headerText="CPF">
+					<h:outputText value="#{cliente.CPF}" />
+				</p:column>
+				<p:column headerText="Nome">
+					<h:outputText value="#{cliente.nome}" />
+				</p:column>
+				<p:column headerText="Sobrenome">
+					<h:outputText value="#{cliente.sobrenome}" />
+				</p:column>
+				<p:column headerText="Telefone">
+					<h:outputText value="#{cliente.telefone}" />
+				</p:column>
+				<p:column headerText="Email">
+					<h:outputText value="#{cliente.email}" />
+				</p:column>
+				<p:column headerText="Data de nascimento" width="100">
+					<h:outputText value="#{cliente.dataDeNascimento}">
+						<f:convertDateTime pattern="dd-MM-yyyy" />
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Sexo" width="80">
+					<h:outputText value="#{cliente.sexo}" />
+				</p:column>
+				<p:column headerText="UF" width="30">
+					<h:outputText value="#{cliente.endereco.estado}" />
+				</p:column>
+				<p:column headerText="Operations" width="226">
+					<p:button id="editCliente" outcome="cadastroCliente.xhtml" value="Editar" icon="fa fa-edit">
+						<f:param name="cliente" value="#{cliente.id}" />
+					</p:button>
+					<p:commandButton id="deleteCliente" value="Deletar" icon="fa fa-remove" action="#{gerenciarClientesMB.delete(cliente)}" >
+						<p:confirm header="Confirmação!" message="Quer mesmo deletar '#{cliente.nome} #{cliente.sobrenome}'?" icon="ui-icon-alert" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</p:fieldset>
+		<p:confirmDialog id="confirmDialog" global="true" showEffect="fade" hideEffect="fade">
+	        <p:commandButton id="confirmYes" value="Yes" styleClass="ui-confirmdialog-yes" icon="fa fa-remove" />
+	        <p:commandButton id="confirmNo" value="No" styleClass="ui-confirmdialog-no" icon="fa fa-ban" />
+	    </p:confirmDialog>
+
+	</ui:define>
+</ui:composition>
+</html>

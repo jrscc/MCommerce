@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/WEB-INF/templates/_comum_menu_rodape.xhtml">
+
+	<ui:define name="content">
+
+		<p:growl id="idMessages" showDetail="true" autoUpdate="true" severity="info" />
+		<p:messages id="idMessagesErrors" showDetail="true" autoUpdate="true" closable="true" severity="error" />
+		
+		<p:fieldset legend="Fornecedores">
+			<p:dataTable id="dataTableFornecedor" var="fornecedor" value="#{gerenciarFornecedoresMB.fornecedores}" emptyMessage="Nenhum registro encontrado." 
+					rows="5" 
+					paginator="true" paginatorAlwaysVisible="false"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+				<p:column headerText="ID" width="60">
+					<h:outputText value="#{fornecedor.id}" />
+				</p:column>
+				<p:column headerText="CNPJ">
+					<h:outputText value="#{fornecedor.CNPJ}" />
+				</p:column>
+				<p:column headerText="Marca">
+					<h:outputText value="#{fornecedor.nomeFantasia}" />
+				</p:column>
+				<p:column headerText="CPF">
+					<h:outputText value="#{fornecedor.CPF}" />
+				</p:column>
+				<p:column headerText="Nome">
+					<h:outputText value="#{fornecedor.nome}" />
+				</p:column>
+				<p:column headerText="Telefone">
+					<h:outputText value="#{fornecedor.telefone}" />
+				</p:column>
+				<p:column headerText="Email">
+					<h:outputText value="#{fornecedor.email}" />
+				</p:column>
+				<p:column headerText="Cidade" width="80">
+					<h:outputText value="#{fornecedor.endereco.cidade}" />
+				</p:column>
+				<p:column headerText="UF" width="30">
+					<h:outputText value="#{fornecedor.endereco.estado}" />
+				</p:column>
+				<p:column headerText="Operations" width="226">
+					<p:button id="editFornec" outcome="cadastroFornecedor.xhtml" value="Editar" icon="fa fa-edit">
+						<f:param name="fornecedor" value="#{fornecedor.id}" />
+					</p:button>
+					<p:commandButton id="deleteFornec" value="Deletar" icon="fa fa-remove" action="#{gerenciarFornecedoresMB.delete(fornecedor)}" >
+						<p:confirm header="Confirmação!" message="Quer mesmo deletar '#{fornecedor.nome} #{fornecedor.sobrenome}'?" icon="ui-icon-alert" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</p:fieldset>
+		<p:confirmDialog id="confirmDialog" global="true" showEffect="fade" hideEffect="fade">
+	        <p:commandButton id="confirmYes" value="Yes" styleClass="ui-confirmdialog-yes" icon="fa fa-remove" />
+	        <p:commandButton id="confirmNo" value="No" styleClass="ui-confirmdialog-no" icon="fa fa-ban" />
+	    </p:confirmDialog>
+
+	</ui:define>
+</ui:composition>
+</html>

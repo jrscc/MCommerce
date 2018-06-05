@@ -70,7 +70,7 @@ public class ClienteDAO extends DAO {
 
 		try {
 			
-			String jpql = "SELECT u FROM User u WHERE 1 = 1 ";
+			String jpql = "SELECT c FROM Cliente c WHERE 1 = 1 ";
 			
 //			// First name
 //			if (notEmpty(filter.getFirstName())) {
