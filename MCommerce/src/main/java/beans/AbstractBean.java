@@ -7,6 +7,8 @@ import javax.faces.application.FacesMessage.Severity;
 import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
 
+import resources.FaixaEtaria;
+import resources.Genero;
 import resources.UF;
 
 
@@ -46,5 +48,13 @@ public abstract class AbstractBean implements Serializable {
 	
 	public UF[] getUf() {
 		return UF.values();
+	}
+	
+	public Genero[] getGenero() {
+		return Genero.values();
+	}
+	
+	public FaixaEtaria[] getFaixaEtaria() {
+		return FaixaEtaria.values();
 	}
 }

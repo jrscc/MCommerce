@@ -1,6 +1,8 @@
 package model;
 
 import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -8,9 +10,10 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 import resources.FaixaEtaria;
 import resources.Genero;
-import resources.Tamanho;
 
 @Entity
 public class Produto {
@@ -18,8 +21,9 @@ public class Produto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Column(name = "nome_produto")
 	private String nome;
-	private String descricao;
+	private String informacoesAdicionais;
 	private double precoCusto;
 	private double precoVenda;
 	@Enumerated(EnumType.STRING)
@@ -27,11 +31,15 @@ public class Produto {
 	@Enumerated(EnumType.STRING)
 	private FaixaEtaria faixaEtaria;
 	
-	@ElementCollection(targetClass=Tamanho.class)
-	@Enumerated(EnumType.STRING)
-	private List<Tamanho> tamanhos;
+	@ElementCollection
+	private List<String> tamanhos;
 	
-	
+	public List<String> getTamanhos() {
+		return tamanhos;
+	}
+	public void setTamanhos(List<String> tamanhos) {
+		this.tamanhos = tamanhos;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -44,11 +52,12 @@ public class Produto {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getDescricao() {
-		return descricao;
+	
+	public String getInformacoesAdicionais() {
+		return informacoesAdicionais;
 	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setInformacoesAdicionais(String informacoesAdicionais) {
+		this.informacoesAdicionais = informacoesAdicionais;
 	}
 	public double getPrecoCusto() {
 		return precoCusto;
@@ -73,12 +82,6 @@ public class Produto {
 	}
 	public void setFaixaEtaria(FaixaEtaria faixaEtaria) {
 		this.faixaEtaria = faixaEtaria;
-	}
-	public List<Tamanho> getTamanhos() {
-		return tamanhos;
-	}
-	public void setTamanhos(List<Tamanho> tamanhos) {
-		this.tamanhos = tamanhos;
 	}
 	
 }

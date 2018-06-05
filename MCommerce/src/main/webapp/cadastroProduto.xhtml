@@ -8,38 +8,72 @@
 <ui:composition template="/WEB-INF/templates/_comum_menu_rodape.xhtml">
 
 	<ui:define name="content">
+	
+		<p:growl id="idMessages" showDetail="true" autoUpdate="true" severity="info" />
+		<p:messages id="idMessagesErrors" showDetail="true" autoUpdate="true" closable="true" severity="error" />
 
 		<div align="center">
 			<h:form id="formLogin">
-				<p:fieldset legend="Cadastro Produto"
-					style="margin-right: 35px; margin-left: 35px; margin-top: 15px; margin-bottom: 15px;">
-					
+
 				<p:panelGrid columns="2" style="text-align: center;">
-					<p:panelGrid columns="2" style="text-align: left;">
-					
-						<p:outputLabel value="ID: " />
-						<p:outputLabel value="" />
-						<p:inputText id="nomeProduto" placeholder="nome" />
-						<p:inputText id="descricaoProduto" placeholder="descrição" />
+					<p:fieldset legend="DADOS DO PRODUTO">
+					<p:fieldset legend="Informações básicas"
+						style="margin-right: 35px; margin-left: 35px; margin-top: 15px; margin-bottom: 15px;">
 						
-						
-					</p:panelGrid>
-					
-					<p:panelGrid columns="2" style="text-align: left;">
-						<p:inputText id="precoCusto" placeholder="preço custo" />
-						<p:inputText id="precoVenda" placeholder="preço venda" />
+						<p:panelGrid columns="1" style="text-align: center;">
 
-						<p:selectOneMenu id="genero">
-							<f:selectItem itemLabel="Selecione o gênero" />
-						</p:selectOneMenu>
-						<p:selectOneMenu id="faixaEtaria">
-							<f:selectItem itemLabel="Selecione a faixa etária" />
-						</p:selectOneMenu>
-					</p:panelGrid>
-						
-					</p:panelGrid>
-				</p:fieldset>
-
+							<p:inputText id="nomeProduto" value="#{cadastroProdutoMB.produto.nome}" placeholder="nome do produto" size="35" />
+							<p:inputText id="informacoesAdicionais" value="#{cadastroProdutoMB.produto.informacoesAdicionais}" placeholder="informações adicionais" size="35" />
+							
+							<p:panelGrid columns="2" style="text-align: center;">
+								<p:outputLabel value="valor de compra: "/>
+								<p:spinner id="precoCusto" value="#{cadastroProdutoMB.produto.precoCusto}" size="10" stepFactor="0.25"/>
+								<p:outputLabel value="valor de venda: "/>
+								<p:spinner id="precoVenda" value="#{cadastroProdutoMB.produto.precoVenda}" size="10" stepFactor="0.25"/>
+							</p:panelGrid>
+							
+						</p:panelGrid>
+					</p:fieldset>
+						<p:fieldset legend="Caracteristicas do produto"
+							style="margin-right: 35px; margin-left: 35px; margin-top: 15px; margin-bottom: 15px;">
+							
+						 <p:panelGrid columns="1" style="text-align: center;">
+							<p:selectOneMenu id="genero" value="#{cadastroProdutoMB.produto.genero}" style="width: 300px;">
+								<f:selectItem itemLabel="Selecione o gênero" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
+								<f:selectItems value="#{cadastroProdutoMB.genero}" var="g" itemLabel="#{g.nome}" itemValue="#{g}" />
+							</p:selectOneMenu>
+							<p:selectOneMenu id="faixaEtaria" value="#{cadastroProdutoMB.produto.faixaEtaria}" style="width: 300px;">
+								<f:selectItem itemLabel="Selecione a faixa etária" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
+								<f:selectItems value="#{cadastroProdutoMB.faixaEtaria}" var="g" itemLabel="#{g.nome}" itemValue="#{g}" />
+							</p:selectOneMenu>
+							</p:panelGrid>
+						</p:fieldset>
+						</p:fieldset>
+						<p:fieldset legend="TAMANHOS DISPONÍVEIS">
+						<p:fieldset legend="Tamanhos Convencionais"
+							style="margin-right: 35px; margin-left: 35px; margin-top: 15px; margin-bottom: 15px;">
+							<p:selectManyCheckbox id="grid00" value="#{cadastroProdutoMB.tamConvencionais}" layout="grid" columns="6">
+        						<f:selectItems value="#{cadastroProdutoMB.tamanhoConvencional}" var="city" itemLabel="#{city}" itemValue="#{city}" />
+   							</p:selectManyCheckbox>
+   						</p:fieldset>
+   						<p:fieldset legend="Tamanhos Numeração tipo 01"
+							style="margin-right: 35px; margin-left: 35px; margin-top: 15px; margin-bottom: 15px;">
+							<p:selectManyCheckbox id="grid01" value="#{cadastroProdutoMB.tamTipo1}" layout="grid" columns="6">
+        							<f:selectItems value="#{cadastroProdutoMB.tamanhoNum1}" var="city" itemLabel="#{city}" itemValue="#{city}" />
+   							</p:selectManyCheckbox>
+   						</p:fieldset>
+   						<p:fieldset legend="Tamanhos Numeração tipo 02"
+							style="margin-right: 35px; margin-left: 35px; margin-top: 15px; margin-bottom: 15px;">
+							<p:selectManyCheckbox id="grid02" value="#{cadastroProdutoMB.tamTipo2}" layout="grid" columns="6">
+        						<f:selectItems value="#{cadastroProdutoMB.tamanhoNum2}" var="city" itemLabel="#{city}" itemValue="#{city}" />
+   							</p:selectManyCheckbox>
+   						</p:fieldset>
+   							<p:commandButton value="Criar produto" action="#{cadastroProdutoMB.saveProduto}" update="@form" 
+								style="width: 300px; height:40px; margin-top:50" icon="fa fa-hand-o-right"/>
+   						</p:fieldset>
+   					
+							
+				</p:panelGrid>
 			</h:form>
 		</div>
 

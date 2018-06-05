@@ -2,6 +2,18 @@ package resources;
 
 public enum Genero {
 	
-	Masculino, Feminino, Unissex;
+	MASCULINO("Masculino"), 
+	FEMININO("Feminino"),
+	UNISSEX("Unissex");
+	
+	private String nome;
+	
+	private Genero(String nome) {
+		this.nome = nome;
+	}
+	
+	public String getNome() {
+		return nome;
+	}	
 
 }
