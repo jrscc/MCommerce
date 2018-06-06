@@ -12,6 +12,7 @@
 		<p:growl id="idMessages" showDetail="true" autoUpdate="true" severity="info" />
 		<p:messages id="idMessagesErrors" showDetail="true" autoUpdate="true" closable="true" severity="error" />
 		
+		<h:form id="form">
 		<p:fieldset legend="Produtos">
 			<p:dataTable id="dataTableProdutos" var="produto" value="#{gerenciarProdutosMB.produtos}" emptyMessage="Nenhum registro encontrado." 
 					rows="5" 
@@ -40,7 +41,7 @@
 					<h:outputText value="#{produto.faixaEtaria}" />
 				</p:column>
 				<p:column headerText="Fornecedor">
-					<h:outputText value="#{null}" />
+					<h:outputText value="#{produto.fornecedor.nomeFantasia}" />
 				</p:column>
 				<p:column headerText="Operations" width="226">
 					<p:button id="editProduto" outcome="cadastroProduto.xhtml" value="Editar" icon="fa fa-edit">
@@ -52,6 +53,7 @@
 				</p:column>
 			</p:dataTable>
 		</p:fieldset>
+		</h:form>
 		<p:confirmDialog id="confirmDialog" global="true" showEffect="fade" hideEffect="fade">
 	        <p:commandButton id="confirmYes" value="Yes" styleClass="ui-confirmdialog-yes" icon="fa fa-remove" />
 	        <p:commandButton id="confirmNo" value="No" styleClass="ui-confirmdialog-no" icon="fa fa-ban" />

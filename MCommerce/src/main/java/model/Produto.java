@@ -7,11 +7,11 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
+import javax.persistence.ManyToOne;
 import resources.FaixaEtaria;
 import resources.Genero;
 
@@ -31,9 +31,18 @@ public class Produto {
 	@Enumerated(EnumType.STRING)
 	private FaixaEtaria faixaEtaria;
 	
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Fornecedor fornecedor;
+	
 	@ElementCollection
 	private List<String> tamanhos;
 	
+	public Fornecedor getFornecedor() {
+		return fornecedor;
+	}
+	public void setFornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
+	}
 	public List<String> getTamanhos() {
 		return tamanhos;
 	}

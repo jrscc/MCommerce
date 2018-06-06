@@ -3,11 +3,18 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui">
 
 <ui:composition template="/WEB-INF/templates/_comum_menu_rodape.xhtml">
 
+	<f:metadata>
+		<o:viewParam name="produto" value="#{cadastroProdutoMB.produto}" />
+		<f:viewAction action="#{cadastroProdutoMB.init()}"/>
+	</f:metadata>
+	
 	<ui:define name="content">
+	
 	
 		<p:growl id="idMessages" showDetail="true" autoUpdate="true" severity="info" />
 		<p:messages id="idMessagesErrors" showDetail="true" autoUpdate="true" closable="true" severity="error" />
@@ -21,7 +28,10 @@
 						style="margin-right: 35px; margin-left: 35px; margin-top: 15px; margin-bottom: 15px;">
 						
 						<p:panelGrid columns="1" style="text-align: center;">
-
+							<p:selectOneMenu id="fornecedor" value="#{cadastroProdutoMB.produto.fornecedor}" style="width: 300px;">
+								<f:selectItem itemLabel="Selecione o fornecedor" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
+								<f:selectItems value="#{cadastroProdutoMB.fornecedores}" var="f" itemLabel="#{f.nomeFantasia} " itemValue="#{f}" />
+							</p:selectOneMenu>
 							<p:inputText id="nomeProduto" value="#{cadastroProdutoMB.produto.nome}" placeholder="nome do produto" size="35" />
 							<p:inputText id="informacoesAdicionais" value="#{cadastroProdutoMB.produto.informacoesAdicionais}" placeholder="informações adicionais" size="35" />
 							
@@ -30,6 +40,7 @@
 								<p:spinner id="precoCusto" value="#{cadastroProdutoMB.produto.precoCusto}" size="10" stepFactor="0.25"/>
 								<p:outputLabel value="valor de venda: "/>
 								<p:spinner id="precoVenda" value="#{cadastroProdutoMB.produto.precoVenda}" size="10" stepFactor="0.25"/>
+								
 							</p:panelGrid>
 							
 						</p:panelGrid>
@@ -46,6 +57,7 @@
 								<f:selectItem itemLabel="Selecione a faixa etária" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
 								<f:selectItems value="#{cadastroProdutoMB.faixaEtaria}" var="g" itemLabel="#{g.nome}" itemValue="#{g}" />
 							</p:selectOneMenu>
+							
 							</p:panelGrid>
 						</p:fieldset>
 						</p:fieldset>

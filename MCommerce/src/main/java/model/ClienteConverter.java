@@ -7,18 +7,12 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
-
 import services.ClienteService;
 import services.ServiceDacException;
-
 
 @FacesConverter(forClass = Cliente.class)
 public class ClienteConverter implements Converter {
 
-	// XXX: Injeção de dependência possível graças ao Omnifaces, pois 
-	// CDI 1.1 e conversores do JSF 2.2 não conversam.
-	// Referências: http://showcase.omnifaces.org/cdi/FacesConverter
-	// http://showcase.omnifaces.org/cdi/FacesValidator
 	@Inject
 	private ClienteService cliente;
 

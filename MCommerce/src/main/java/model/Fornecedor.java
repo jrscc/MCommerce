@@ -1,10 +1,13 @@
 package model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -24,10 +27,15 @@ public class Fornecedor {
 	private String email;
 	private String telefone;
 	
-//	@OneToMany
-//	private List<Produto> produtos;
+	@OneToMany(cascade={CascadeType.ALL})
+	private List<Produto> produtos;
 	
-	
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
 	public String getNomeFantasia() {
 		return nomeFantasia;
 	}

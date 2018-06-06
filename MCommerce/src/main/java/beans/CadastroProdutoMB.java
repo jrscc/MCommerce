@@ -7,7 +7,10 @@ import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import model.Fornecedor;
 import model.Produto;
+import services.FornecedorService;
 import services.ProdutoService;
 import services.ServiceDacException;
 
@@ -16,6 +19,8 @@ import services.ServiceDacException;
 public class CadastroProdutoMB extends AbstractBean{
 
 	private static final long serialVersionUID = -5889267824712098769L;
+	
+	private List<Fornecedor> fornecedores;
 	
 	private Produto produto;
 	
@@ -31,14 +36,27 @@ public class CadastroProdutoMB extends AbstractBean{
 	
 	@Inject
 	private ProdutoService produtoService;
-
+	
+	@Inject
+	private FornecedorService fornecedorService;
+	
 	@PostConstruct
 	public void init() {
-		
+		filtrar();
 		if (produto == null) {
 			produto = new Produto();
 		}
 	}
+	public String filtrar() {
+		try {
+			fornecedores = fornecedorService.findBy(null);
+		} catch (ServiceDacException e) {
+			reportarMensagemDeErro(e.getMessage());
+			return null;
+		}
+		return null;
+	}
+
 	public String saveProduto() {
 		adicionarTamanhos();
 		try {
@@ -57,6 +75,18 @@ public class CadastroProdutoMB extends AbstractBean{
 		return "index.xhtml?faces-redirect=true";
 	}
 	
+	public List<Fornecedor> getFornecedores() {
+		return fornecedores;
+	}
+	public void setFornecedores(List<Fornecedor> fornecedores) {
+		this.fornecedores = fornecedores;
+	}
+	public FornecedorService getFornecedorService() {
+		return fornecedorService;
+	}
+	public void setFornecedorService(FornecedorService fornecedorService) {
+		this.fornecedorService = fornecedorService;
+	}
 	public List<String> getTamConvencionais() {
 		return tamConvencionais;
 	}

@@ -46,7 +46,6 @@ public class GerenciarProdutosMB extends AbstractBean{
 	}
 
 	public String delete(Produto produto) {
-		
 		try {
 			produtoService.delete(produto);
 		} catch (ServiceDacException e) {
