@@ -12,9 +12,52 @@
 <h:body>
 
 	<div id="header">
-		<p:panel columns="1" style="width : 100%; text-align:center" >
-			<h:outputLabel value="Header Aplicação - v8.0" />
+		<p:panel columns="1" style="width : 100%; height: 100px ;text-align:center" header="MCommerce" >
+			<p:inputText style="margin-right:2px; border-radius: 25px; width : 400px" placeholder="Search"/>
+            <p:commandButton type="button" icon="fa fa-search" />
 		</p:panel>
+		<h:form>  
+    <p:growl id="messages"/>
+ 
+    <p:menubar>
+    
+    	<p:menuitem value="Home" url="http://localhost:8080/Mcommerce/index.xhtml" icon="fa fa-home" />
+    	
+        <p:submenu label="Páginas AUX" icon="fa fa-file-text">
+                <p:menuitem value="Login Cadastro" url="http://localhost:8080/Mcommerce/loginCadastro.xhtml" icon="fa fa-user-plus"/>
+                <p:menuitem value="Recuperar Senha" url="http://localhost:8080/Mcommerce/recuperarSenha.xhtml" icon="fa fa-user-secret"/>
+        </p:submenu>
+ 
+        <p:submenu label="Cliente" icon="fa fa-user">
+             <p:menuitem value="Cadastrar Cliente" url="http://localhost:8080/Mcommerce/cadastroCliente.xhtml" icon="fa fa-user-plus"/>
+             <p:menuitem value="Gerenciar Clientes" url="http://localhost:8080/Mcommerce/gerenciarClientes.xhtml" icon="fa fa-server"/>
+        </p:submenu>
+ 
+        <p:submenu label="Fornecedor" icon="fa fa-street-view">
+            <p:menuitem value="Cadastrar Fornecedor" url="http://localhost:8080/Mcommerce/cadastroFornecedor.xhtml" icon="fa fa-user-plus"/>
+            <p:menuitem value="Gerenciar Fornecedores" url="http://localhost:8080/Mcommerce/gerenciarFornecedores.xhtml" icon="fa fa-server"/>
+        </p:submenu>
+ 
+        <p:submenu label="Produto" icon="fa fa-gift">
+                <p:menuitem value="Cadastrar Produto" url="http://localhost:8080/Mcommerce/cadastroProduto.xhtml" icon="fa fa-gift" update="messages"/>
+                <p:menuitem value="Gerenciar Produtos" url="http://localhost:8080/Mcommerce/gerenciarProdutos.xhtml" icon="fa fa-server" update="messages"/>
+        </p:submenu>
+        
+        <p:submenu label="Pedido" icon="fa fa-shopping-cart">
+                <p:menuitem value="Gerenciar Pedidos" icon="fa fa-server" update="messages"/>
+        </p:submenu>
+ 
+        <f:facet name="options">
+        	<p:splitButton value="Usuario" actionListener="#{buttonView.save}" update="messages" icon="fa fa-user">
+        		<p:menuitem value="Meus Pedidos" icon="fa fa-shopping-cart" />
+        		<p:menuitem value="Meu Cadastro" icon="fa fa-list-alt" />
+        		<p:menuitem value="Favoritos" icon="fa fa-heart" />
+        		<p:menuitem value="Sair" icon="fa fa-reply" />
+        		fa-heart
+    		</p:splitButton>
+        </f:facet>
+    </p:menubar>
+</h:form>
 	</div>
 
 	<div id="content">

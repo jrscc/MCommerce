@@ -20,9 +20,9 @@
 		<p:messages id="idMessagesErrors" showDetail="true" autoUpdate="true" closable="true" severity="error" />
 
 		<div align="center">
-			<h:form id="formLogin">
+			<h:form id="formProduto">
 
-				<p:panelGrid columns="2" style="text-align: center;">
+				<p:panelGrid columns="2" style="text-align: center; margin-top: 35px; margin-bottom: 35px; margin-left: 35px; margin-rigth: 35px;;">
 					<p:fieldset legend="DADOS DO PRODUTO">
 					<p:fieldset legend="Informações básicas"
 						style="margin-right: 35px; margin-left: 35px; margin-top: 15px; margin-bottom: 15px;">
@@ -80,7 +80,7 @@
         						<f:selectItems value="#{cadastroProdutoMB.tamanhoNum2}" var="city" itemLabel="#{city}" itemValue="#{city}" />
    							</p:selectManyCheckbox>
    						</p:fieldset>
-   							<p:commandButton value="Criar produto" action="#{cadastroProdutoMB.saveProduto}" update="@form" 
+   							<p:commandButton value="Prosseguir" action="#{cadastroProdutoMB.saveProduto}" update="@form" 
 								style="width: 300px; height:40px; margin-top:50" icon="fa fa-hand-o-right"/>
    						</p:fieldset>
    					

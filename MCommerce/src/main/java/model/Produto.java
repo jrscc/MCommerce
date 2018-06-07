@@ -31,10 +31,10 @@ public class Produto {
 	@Enumerated(EnumType.STRING)
 	private FaixaEtaria faixaEtaria;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	private Fornecedor fornecedor;
 	
-	@ElementCollection
+	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> tamanhos;
 	
 	public Fornecedor getFornecedor() {
@@ -92,5 +92,54 @@ public class Produto {
 	public void setFaixaEtaria(FaixaEtaria faixaEtaria) {
 		this.faixaEtaria = faixaEtaria;
 	}
-	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((faixaEtaria == null) ? 0 : faixaEtaria.hashCode());
+		result = prime * result + ((genero == null) ? 0 : genero.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((informacoesAdicionais == null) ? 0 : informacoesAdicionais.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		long temp;
+		temp = Double.doubleToLongBits(precoCusto);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(precoVenda);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Produto other = (Produto) obj;
+		if (faixaEtaria != other.faixaEtaria)
+			return false;
+		if (genero != other.genero)
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (informacoesAdicionais == null) {
+			if (other.informacoesAdicionais != null)
+				return false;
+		} else if (!informacoesAdicionais.equals(other.informacoesAdicionais))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (Double.doubleToLongBits(precoCusto) != Double.doubleToLongBits(other.precoCusto))
+			return false;
+		if (Double.doubleToLongBits(precoVenda) != Double.doubleToLongBits(other.precoVenda))
+			return false;
+		return true;
+	}
 }
