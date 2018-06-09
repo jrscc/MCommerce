@@ -44,16 +44,25 @@
         </p:submenu>
         
         <p:submenu label="Pedido" icon="fa fa-shopping-cart">
-                <p:menuitem value="Gerenciar Pedidos" icon="fa fa-server" update="messages"/>
+                <p:menuitem value="Gerenciar Pedidos" url="http://localhost:8080/Mcommerce/gerenciarPedidos.xhtml" icon="fa fa-server" update="messages"/>
+        </p:submenu>
+        
+        <p:submenu label="Transportadora" icon="fa fa-truck">
+                <p:menuitem value="cadastrar Transportadora" url="http://localhost:8080/Mcommerce/cadastroTransportadora.xhtml" icon="fa fa-truck " update="messages"/>
+                 <p:menuitem value="Gerir Transportadoras" url="http://localhost:8080/Mcommerce/gerenciarTransportadoras.xhtml" icon="fa fa-server" update="messages"/>
+        </p:submenu>
+        
+        <p:submenu label="Mensagens" icon="fa fa-envelope-o fa-xs" >
+                <p:menuitem value="Enviar Mensagem" icon="fa fa-paper-plane-o" update="messages"/>
         </p:submenu>
  
         <f:facet name="options">
-        	<p:splitButton value="Usuario" actionListener="#{buttonView.save}" update="messages" icon="fa fa-user">
+        	<p:splitButton value="Usuario" update="messages" icon="fa fa-user">
         		<p:menuitem value="Meus Pedidos" icon="fa fa-shopping-cart" />
         		<p:menuitem value="Meu Cadastro" icon="fa fa-list-alt" />
+        		<p:menuitem value="Mensagens" icon="fa fa-envelope-o fa-xs" />
         		<p:menuitem value="Favoritos" icon="fa fa-heart" />
         		<p:menuitem value="Sair" icon="fa fa-reply" />
-        		fa-heart
     		</p:splitButton>
         </f:facet>
     </p:menubar>

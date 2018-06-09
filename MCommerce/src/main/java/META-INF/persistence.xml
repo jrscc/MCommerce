@@ -13,6 +13,8 @@
 		<class>model.Fornecedor</class>
 		<class>model.Produto</class>
 		<class>model.Endereco</class>
+		<class>model.Transportadora</class>
+<!-- 		<class>model.Pedido</class> -->
 
 		<properties>
 
