@@ -34,7 +34,7 @@ public class Produto {
 	@ManyToOne
 	private Fornecedor fornecedor;
 	
-	@ElementCollection(fetch = FetchType.EAGER)
+	@ElementCollection(fetch = FetchType.LAZY)
 	private List<String> tamanhos;
 	
 	public Fornecedor getFornecedor() {

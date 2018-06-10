@@ -14,7 +14,10 @@
 		<class>model.Produto</class>
 		<class>model.Endereco</class>
 		<class>model.Transportadora</class>
-<!-- 		<class>model.Pedido</class> -->
+		<class>model.Pedido</class>
+		<class>model.ItemDePedido</class>
+		<class>model.Pagamento</class>
+		
 
 		<properties>
 

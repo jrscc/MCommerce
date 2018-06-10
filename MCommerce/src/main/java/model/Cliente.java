@@ -1,11 +1,14 @@
 package model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,6 +38,8 @@ public class Cliente {
 	private String email;
 	private String senha;
 	private String telefone;
+	@ElementCollection(fetch = FetchType.EAGER)
+	private List<String> mensagens;
 	
 	public Integer getId() {
 		return id;
@@ -107,6 +112,12 @@ public class Cliente {
 	}
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+	public List<String> getMensagens() {
+		return mensagens;
+	}
+	public void setMensagens(List<String> mensagens) {
+		this.mensagens = mensagens;
 	}
 	@Override
 	public int hashCode() {
