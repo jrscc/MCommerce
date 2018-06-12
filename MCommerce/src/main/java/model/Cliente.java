@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class Cliente {
 	private String senha;
 	private String telefone;
 	@ElementCollection(fetch = FetchType.EAGER)
-	private List<String> mensagens;
+	private List<String> mensagens = new ArrayList<>();
 	
 	public Integer getId() {
 		return id;
