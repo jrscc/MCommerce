@@ -7,11 +7,57 @@
 
 <ui:composition template="/WEB-INF/templates/_comum_menu_rodape.xhtml">
 
+	
+
 	<ui:define name="content">
 
-		<h1>ACOMPANHAMENTO DE ENTREGA</h1>
+	<p:fieldset legend="Acompanhamento de Pedido" style="margin-right: 35px; margin-left: 35px; margin-top: 15px; margin-bottom: 15px;">
+		<p:steps activeIndex="1" styleClass="custom" readonly="false">
+			<p:menuitem value="Personal" url="#" />
+			<p:menuitem value="Seat Selection" url="#" />
+			<p:menuitem value="Payment" url="#" />
+			<p:menuitem value="Confirmation" url="#" />
+		</p:steps>
+		<p:outputLabel value=" ."></p:outputLabel>
+	</p:fieldset>
+		
+		<style type="text/css">
+.ui-steps .ui-steps-item {
+	width: 24%;
+}
 
+.ui-state-highlight {
+	text-shadow: none !important;
+}
+
+.ui-steps.custom {
+	margin-bottom: 30px;
+}
+
+.ui-steps.custom .ui-steps-item .ui-menuitem-link {
+	height: 10px;
+	padding: 0 1em;
+}
+
+.ui-steps.custom .ui-steps-item .ui-steps-number {
+	background-color: #0081c2;
+	color: #FFFFFF;
+	display: inline-block;
+	width: 30px;
+	border-radius: 10px;
+	margin-top: -10px;
+	margin-bottom: 10px;
+}
+
+.ui-steps.custom .ui-steps-item.ui-state-highlight .ui-steps-title {
+	color: #555;
+}
+</style>
+
+		
 	</ui:define>
+	
+	
 	
 </ui:composition>
 </html>

@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,13 +21,17 @@ import javax.persistence.TemporalType;
 import resources.Sexo;
 
 @Entity
-public class Cliente {
+public class Cliente implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8051723922355071933L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String password;
 	private String login;
+	private String password;
 	private String nome;
 	private String sobrenome;
 	private String CPF;
@@ -36,8 +41,6 @@ public class Cliente {
 	private Sexo sexo;
 	@OneToOne(cascade = {CascadeType.ALL})
 	private Endereco endereco;
-	private String email;
-	private String senha;
 	private String telefone;
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> mensagens = new ArrayList<>();
@@ -96,18 +99,6 @@ public class Cliente {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
 	public String getTelefone() {
 		return telefone;
 	}
@@ -126,7 +117,6 @@ public class Cliente {
 		int result = 1;
 		result = prime * result + ((CPF == null) ? 0 : CPF.hashCode());
 		result = prime * result + ((dataDeNascimento == null) ? 0 : dataDeNascimento.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
@@ -151,11 +141,6 @@ public class Cliente {
 			if (other.dataDeNascimento != null)
 				return false;
 		} else if (!dataDeNascimento.equals(other.dataDeNascimento))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
 			return false;
 		if (id == null) {
 			if (other.id != null)

@@ -17,7 +17,7 @@ public class MensagemMB extends AbstractBean{
 	
 	private List<Cliente> clientes;
 	
-	private Cliente cliente = new Cliente();
+	private Cliente cliente;
 	
 	private String titulo;
 	
@@ -29,7 +29,6 @@ public class MensagemMB extends AbstractBean{
 	@PostConstruct
 	public void init() {
 		filtrar();
-		
 	}
 	public String filtrar() {
 		try {
@@ -44,7 +43,6 @@ public class MensagemMB extends AbstractBean{
 	public String saveCliente() {
 		String mensagemEnviada = titulo + " - " + mensagem;
 		cliente.getMensagens().add(mensagemEnviada);
-		System.out.println("=--------Click");
 		try {
 				clienteService.update(cliente, false);
 		} catch (ServiceDacException e) {

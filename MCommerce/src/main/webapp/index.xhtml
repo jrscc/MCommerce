@@ -8,9 +8,47 @@
 <ui:composition template="/WEB-INF/templates/_comum_menu_rodape.xhtml">
 
 	<ui:define name="content">
-
-
-
+	
+	<div style="margin-top: 10px; margin-bottom: 10px;">
+		<p:panel header="OFERTAS EXCLUSIVAS" style="text-align:center" closable="true" >
+		<p:contentFlow value="#{indexMB.images}" var="image">
+    		<p:graphicImage name="/images/#{image}" styleClass="content" />
+    		<div class="caption">OFERTA EXCLUSIVA</div>
+		</p:contentFlow>
+		</p:panel>
+	</div>
+	
+	<h:form id="form">
+    <p:dataGrid var="produto" value="#{indexMB.produtos}" columns="4" layout="grid"
+        rows="12" paginator="true" id="produtos"
+        paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+        rowsPerPageTemplate="6,12,16">
+ 
+        <f:facet name="header">
+            Produtos Disponíveis
+        </f:facet>
+ 
+        <p:panel header="#{produto.id}" style="text-align:center">
+            <h:panelGrid columns="1" style="width:100%">
+                <p:graphicImage library="images" name="#{produto.foto}" style="max-width:250px; max-height:200px; width: auto; height: auto;"/> 
+ 
+ 				<h:outputText value="#{produto.nome} - #{produto.informacoesAdicionais}" />
+ 				<h:panelGrid columns="3" style="width:100%">
+ 				<p:spinner id="precoCusto" value="" size="1" stepFactor="1" placeholder="QTD"/>
+ 				<p:selectOneMenu id="tamanho" value="" style="width: 50px;">
+						<f:selectItem itemLabel="TAM" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
+						<f:selectItems value="" var="f" itemLabel="#{f.nomeFantasia} " itemValue="#{f}" />
+				</p:selectOneMenu>
+                <h:outputText value="#{produto.precoVenda}0 R$" />
+				</h:panelGrid>
+                <p:commandButton value="Adicionar ao carrinho" icon="fa fa-cart-plus"/>
+ 
+            </h:panelGrid>
+        </p:panel>
+ 
+    </p:dataGrid>
+	</h:form>
+	
 	</ui:define>
 	
 </ui:composition>

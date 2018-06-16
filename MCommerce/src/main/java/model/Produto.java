@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import resources.FaixaEtaria;
 import resources.Genero;
@@ -33,6 +34,8 @@ public class Produto {
 	
 	@ManyToOne
 	private Fornecedor fornecedor;
+	
+	private String foto = "";
 	
 	@ElementCollection(fetch = FetchType.LAZY)
 	private List<String> tamanhos;
@@ -61,7 +64,12 @@ public class Produto {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+	public String getFoto() {
+		return foto;
+	}
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
 	public String getInformacoesAdicionais() {
 		return informacoesAdicionais;
 	}
@@ -92,6 +100,7 @@ public class Produto {
 	public void setFaixaEtaria(FaixaEtaria faixaEtaria) {
 		this.faixaEtaria = faixaEtaria;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

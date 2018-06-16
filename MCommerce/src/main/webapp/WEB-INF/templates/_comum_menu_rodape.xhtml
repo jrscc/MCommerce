@@ -7,10 +7,9 @@
 	xmlns:o="http://omnifaces.org/ui">
 
 	<f:metadata>
-		<o:viewParam name="produto" value="#{cadastroProdutoMB.produto}" />
-		<f:viewAction action="#{cadastroProdutoMB.init()}"/>
+		<f:viewAction action="#{mensagemMB.init()}"/>
 	</f:metadata>
-	
+
 <h:head>
 	<title><ui:insert name="title">Página principal</ui:insert></title>
 </h:head>
@@ -51,7 +50,7 @@
         
         <p:submenu label="Pedido" icon="fa fa-shopping-cart">
                 <p:menuitem value="Gerenciar Pedidos" url="http://localhost:8080/Mcommerce/gerenciarPedidos.xhtml" icon="fa fa-server" update="messages"/>
-                <p:menuitem value="Acompanhar Pedido" url="http://localhost:8080/Mcommerce/gerenciarPedidos.xhtml" icon="fa fa-flag" update="messages"/>
+                <p:menuitem value="Acompanhar Pedido" url="http://localhost:8080/Mcommerce/acompanhamentoEntrega.xhtml" icon="fa fa-flag" update="messages"/>
         </p:submenu>
         
         <p:submenu label="Transportadora" icon="fa fa-truck">
@@ -64,6 +63,7 @@
         </p:submenu>
  
         <f:facet name="options">
+        	<p:commandButton id="carrinho" action="carrinho.xhtml" value="Carrinho" icon="fa fa-shopping-cart"/>
         	<p:splitButton value="Usuario" update="messages" icon="fa fa-user">
         		<p:menuitem value="Meus Pedidos" icon="fa fa-shopping-cart" />
         		<p:menuitem value="Meu Cadastro" icon="fa fa-list-alt" />
@@ -74,19 +74,20 @@
         </f:facet>
     </p:menubar>
 	</h:form>
-    <p:dialog id="mensagem-dialog-id" widgetVar="mensagemDialog" header="Envio de Mensagem" modal="true" dynamic="true" closeOnEscape="true">
+	
+    <p:dialog id="mensagem-dialog-id" widgetVar="mensagemDialog" header="Envio de Mensagem" modal="true" dynamic="true" closeOnEscape="true" >
     	<p:messages id="erroId" showDetail="true" closable="true" severity="error">
     		<p:autoUpdate/>
     	</p:messages>
     	<h:form id="formMensagem">
     		<p:panelGrid columns="1" style="text-align: center">
-    			<p:selectOneMenu id="destinatario" value="#{mensagemMB.cliente}" style="width:240px" required="true">
-						<f:selectItem itemLabel="Destinatário" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
+    			<p:selectOneMenu id="destinatario" value="#{mensagemMB.cliente}" style="width:240px">
+						<f:selectItem itemLabel="Destinatário" itemValue="#{null}" />
 						<f:selectItems value="#{mensagemMB.clientes}" var="f" itemLabel="#{f.nome} #{f.sobrenome}" itemValue="#{f}" />
 				</p:selectOneMenu>
     			<p:inputText id="titulo" value="#{mensagemMB.titulo}" placeholder="Titulo" style="width:280px" required="true"/>
     			<p:inputTextarea id="mensagem" value="#{mensagemMB.mensagem}" placeholder="Mensagem" cols="25" rows="8" required="true"/>
-    			<p:commandButton value="Enviar Mensagem" action="#{mensagemMB.saveCliente}" icon="fa fa-paper-plane-o" update="@form"/>
+    			<p:commandButton value="Enviar Mensagem" action="#{mensagemMB.saveCliente}" icon="fa fa-paper-plane-o" update="@form" />
     		</p:panelGrid>
     	</h:form>
     </p:dialog>
@@ -105,5 +106,7 @@
 			aqui veiculados são de propriedade exclusiva da MJR.COM Internet S.A."/>
 		</p:panel>
 	</div>
+	
+	
 </h:body>
 </html>

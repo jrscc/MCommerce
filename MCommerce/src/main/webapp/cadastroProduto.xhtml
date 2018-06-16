@@ -57,7 +57,8 @@
 								<f:selectItem itemLabel="Selecione a faixa etária" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
 								<f:selectItems value="#{cadastroProdutoMB.faixaEtaria}" var="g" itemLabel="#{g.nome}" itemValue="#{g}" />
 							</p:selectOneMenu>
-							
+							<p:fileUpload label="Adicionar foto" mode="simple" skinSimple="true"/>
+							<p:inputText id="foto" value="#{cadastroProdutoMB.produto.foto}" placeholder="Imagem.jpg" required="true"/>
 							</p:panelGrid>
 						</p:fieldset>
 						</p:fieldset>
