@@ -37,7 +37,7 @@ public class Produto {
 	
 	private String foto = "";
 	
-	@ElementCollection(fetch = FetchType.LAZY)
+	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> tamanhos;
 	
 	public Fornecedor getFornecedor() {

@@ -15,7 +15,7 @@ import services.ServiceDacException;
 @ViewScoped
 public class GerenciarClientesMB extends AbstractBean {
 
-	private static final long serialVersionUID = 8430517551643680513L;
+	private static final long serialVersionUID = -3717544541024377351L;
 
 	private List<Cliente> clientes;
 
@@ -32,7 +32,7 @@ public class GerenciarClientesMB extends AbstractBean {
 
 	public String filtrar() {
 		try {
-			clientes = clienteService.findBy(null);
+			clientes = clienteService.findBy(new ClienteFilter());
 		} catch (ServiceDacException e) {
 			reportarMensagemDeErro(e.getMessage());
 			return null;
@@ -57,6 +57,10 @@ public class GerenciarClientesMB extends AbstractBean {
 		reportarMensagemDeSucesso("Cliente '" + cliente.getNome() + "' deleted");
 		
 		return "index?faces-redirect=true";
+	}
+	
+	public String editRedirect(String i) {
+		return EnderecoPaginas.PAGINA_CADASTRO_CLIENTE+"cliente = " + i;
 	}
 
 	public List<Cliente> getClientes() {

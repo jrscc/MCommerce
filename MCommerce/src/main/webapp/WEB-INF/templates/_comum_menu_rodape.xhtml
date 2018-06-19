@@ -6,9 +6,6 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:o="http://omnifaces.org/ui">
 
-	<f:metadata>
-		<f:viewAction action="#{mensagemMB.init()}"/>
-	</f:metadata>
 
 <h:head>
 	<title><ui:insert name="title">Página principal</ui:insert></title>
@@ -61,7 +58,7 @@
         	<p:splitButton value="Bem vindo #{menu.userLogin}" icon="fa fa-user">
         		<p:menuitem value="Meus Pedidos" icon="fa fa-shopping-cart" rendered="#{menu.isUserInRole('CLIENTE')}"/>
         		<p:menuitem value="Meu Cadastro" icon="fa fa-list-alt" rendered="#{menu.isUserInRole('CLIENTE')}"/>
-        		<p:menuitem value="Mensagens" icon="fa fa-envelope-o fa-xs" rendered="#{menu.isUserInRole('CLIENTE')}"/>
+        		<p:menuitem value="Mensagens" icon="fa fa-envelope-o fa-xs" url="http://localhost:8080/Mcommerce/paginas/protegido/caixaDeEntrada.xhtml" rendered="#{menu.isUserInRole('CLIENTE')}"/>
         		<p:menuitem value="Favoritos" icon="fa fa-heart" rendered="#{menu.isUserInRole('CLIENTE')}"/>
         		<p:menuitem value="Login/Cadastro" icon="fa fa-user-plus" url="http://localhost:8080/Mcommerce/paginas/protegido/redirectIndex.xhtml" rendered="#{!menu.isUserInRole('ADMIN')}"/>
         		<p:menuitem value="Sair" icon="fa fa-sign-out" action="#{logout.efetuarLogout}" ajax="false"/>
@@ -77,12 +74,12 @@
     	<h:form id="formMensagem">
     		<p:panelGrid columns="1" style="text-align: center">
     			<p:selectOneMenu id="destinatario" value="#{mensagemMB.cliente}" style="width:240px">
-						<f:selectItem itemLabel="Destinatário" itemValue="#{null}" />
-						<f:selectItems value="#{mensagemMB.clientes}" var="f" itemLabel="'#{f.login}' #{f.nome} #{f.sobrenome} " itemValue="#{f}" />
+						<f:selectItem itemLabel="Destinatario" itemValue="#{null}" noSelectionOption="true" itemDisabled="true"/>
+						<f:selectItems id="clientItem" value="#{mensagemMB.clientes}" var="f" itemLabel="'#{f.login}' #{f.nome} #{f.sobrenome} " itemValue="#{f}" />
 				</p:selectOneMenu>
     			<p:inputText id="titulo" value="#{mensagemMB.titulo}" placeholder="Titulo" style="width:280px" required="true"/>
     			<p:inputTextarea id="mensagem" value="#{mensagemMB.mensagem}" placeholder="Mensagem" cols="25" rows="8" required="true"/>
-    			<p:commandButton value="Enviar Mensagem" action="#{mensagemMB.saveCliente}" icon="fa fa-paper-plane-o" update="@form" />
+    			<p:commandButton id="btnEnviar" value="Enviar Mensagem" action="#{mensagemMB.saveCliente}" icon="fa fa-paper-plane-o" update="@form"/>
     		</p:panelGrid>
     	</h:form>
     </p:dialog>

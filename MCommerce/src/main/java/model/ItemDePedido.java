@@ -22,7 +22,7 @@ public class ItemDePedido {
 	private Produto produto;
 	private double subTotal;
 	
-	@ElementCollection(fetch = FetchType.EAGER)
+	@ElementCollection(fetch = FetchType.LAZY)
 	private List<String> tamanhosSelecionados;
 	
 	public Integer getId() {

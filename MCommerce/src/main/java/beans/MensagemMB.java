@@ -2,19 +2,22 @@ package beans;
 
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.faces.view.ViewScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import filters.ClienteFilter;
 import model.Cliente;
 import services.ClienteService;
 import services.ServiceDacException;
 
 @Named
-@ViewScoped
+@RequestScoped
 public class MensagemMB extends AbstractBean{
 
-	private static final long serialVersionUID = 2975193071951104420L;
 	
+	private static final long serialVersionUID = 7717425022701383887L;
+
 	private List<Cliente> clientes;
 	
 	private Cliente cliente;
@@ -32,7 +35,7 @@ public class MensagemMB extends AbstractBean{
 	}
 	public String filtrar() {
 		try {
-			clientes = clienteService.findBy(null);
+			clientes = clienteService.findBy(new ClienteFilter());
 		} catch (ServiceDacException e) {
 			reportarMensagemDeErro(e.getMessage());
 			return null;
@@ -52,15 +55,9 @@ public class MensagemMB extends AbstractBean{
 
 		reportarMensagemDeSucesso("Cliente '" + cliente.getNome() + "' saved");
 
-		return "index.xhtml?faces-redirect=true";
+		return EnderecoPaginas.PAGINA_PRINCIPAL;
 	}
 	
-	public ClienteService getClienteService() {
-		return clienteService;
-	}
-	public void setClienteService(ClienteService clienteService) {
-		this.clienteService = clienteService;
-	}
 	public List<Cliente> getClientes() {
 		return clientes;
 	}

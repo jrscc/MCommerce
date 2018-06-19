@@ -127,11 +127,12 @@ public class Cliente implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((CPF == null) ? 0 : CPF.hashCode());
-		result = prime * result + ((dataDeNascimento == null) ? 0 : dataDeNascimento.hashCode());
+		result = prime * result + ((group == null) ? 0 : group.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
+		result = prime * result + ((sobrenome == null) ? 0 : sobrenome.hashCode());
+		result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
 		return result;
 	}
 	@Override
@@ -148,10 +149,7 @@ public class Cliente implements Serializable {
 				return false;
 		} else if (!CPF.equals(other.CPF))
 			return false;
-		if (dataDeNascimento == null) {
-			if (other.dataDeNascimento != null)
-				return false;
-		} else if (!dataDeNascimento.equals(other.dataDeNascimento))
+		if (group != other.group)
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -168,7 +166,15 @@ public class Cliente implements Serializable {
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
-		if (sexo != other.sexo)
+		if (sobrenome == null) {
+			if (other.sobrenome != null)
+				return false;
+		} else if (!sobrenome.equals(other.sobrenome))
+			return false;
+		if (telefone == null) {
+			if (other.telefone != null)
+				return false;
+		} else if (!telefone.equals(other.telefone))
 			return false;
 		return true;
 	}

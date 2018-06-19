@@ -132,4 +132,5 @@ public class ClienteService implements Serializable{
 			throw new ServiceDacException("Login already exists: " + cliente.getLogin()); 
 		}
 	}
+	
 }

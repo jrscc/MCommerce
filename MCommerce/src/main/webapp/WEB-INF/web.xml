@@ -24,6 +24,7 @@
   <context-param>
     <param-name>primefaces.THEME</param-name>
     <param-value>dot-luv</param-value>
+<!--     dot-luv -->
   </context-param>
   <error-page>
 		<error-code>400</error-code>

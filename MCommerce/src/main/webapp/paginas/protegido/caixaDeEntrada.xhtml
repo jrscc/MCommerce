@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	
+	<f:metadata>
+		<f:viewAction action="#{caixaDeEntradaMB.init()}"/>
+	</f:metadata>
+
+<ui:composition template="/WEB-INF/templates/_comum_menu_rodape.xhtml">
+	
+	<ui:define name="content">
+		
+		<p:growl id="idMessages" showDetail="true" autoUpdate="true" severity="info" />
+		<p:messages id="idMessagesErrors" showDetail="true" autoUpdate="true" closable="true" severity="error" />
+		
+		<h:form id="form">
+		<p:fieldset legend="Caixa de Mensagens">
+			<p:dataTable id="dataTableMensagem" var="mensagem" value="#{caixaDeEntradaMB.cliente.mensagens}" emptyMessage="Nenhum registro encontrado." 
+					rows="5" 
+					paginator="true" paginatorAlwaysVisible="false"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+				<p:column headerText="Mensagens" width="1100">
+					<h:outputText value="#{mensagem}" />
+				</p:column>
+			</p:dataTable>
+		</p:fieldset>
+		</h:form>
+		<p:confirmDialog id="confirmDialog" global="true" showEffect="fade" hideEffect="fade">
+	        <p:commandButton id="confirmYes" value="Yes" styleClass="ui-confirmdialog-yes" icon="fa fa-remove" />
+	        <p:commandButton id="confirmNo" value="No" styleClass="ui-confirmdialog-no" icon="fa fa-ban" />
+	    </p:confirmDialog>
+		
+	</ui:define>
+
+</ui:composition>
+</html>

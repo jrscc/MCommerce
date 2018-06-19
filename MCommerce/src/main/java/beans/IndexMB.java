@@ -39,6 +39,7 @@ public class IndexMB extends AbstractBean{
             images.add("real.jpg");
             images.add("barca.jpg");
             images.add("bermudaNike.jpg");
+            
         
     }
  
@@ -75,6 +76,5 @@ public class IndexMB extends AbstractBean{
 	public void setProdutoService(ProdutoService produtoService) {
 		this.produtoService = produtoService;
 	}
-	
-	
+
 }

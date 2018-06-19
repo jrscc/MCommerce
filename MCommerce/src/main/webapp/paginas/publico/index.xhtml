@@ -34,10 +34,10 @@
  
  				<h:outputText value="#{produto.nome} - #{produto.informacoesAdicionais}" />
  				<h:panelGrid columns="3" style="width:100%">
- 				<p:spinner id="precoCusto" value="" size="1" stepFactor="1" placeholder="QTD"/>
+ 				<p:spinner id="qtd" value="" size="1" stepFactor="1" placeholder="QTD"/>
  				<p:selectOneMenu id="tamanho" value="" style="width: 50px;">
 						<f:selectItem itemLabel="TAM" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
-						<f:selectItems value="" var="f" itemLabel="#{f.nomeFantasia} " itemValue="#{f}" />
+						<f:selectItems value="#{indexMB.produtos}"  var="p" itemLabel="#{p.tamanhos} " itemValue="#{p}" />
 				</p:selectOneMenu>
                 <h:outputText value="#{produto.precoVenda}0 R$" />
 				</h:panelGrid>

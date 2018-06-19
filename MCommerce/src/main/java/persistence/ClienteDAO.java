@@ -97,10 +97,10 @@ public class ClienteDAO extends DAO {
 //				jpql += "AND u.group = :group ";
 //			}
 //			
-//			// Login
-//			if (notEmpty(filter.getLogin())) {
-//				jpql += "AND u.login = :login ";
-//			}
+			// Login
+			if (notEmpty(filter.getLogin())) {
+				jpql += "AND c.login = :login ";
+			}
 //
 			TypedQuery<Cliente> query = em.createQuery(jpql, Cliente.class);
 //			
@@ -125,10 +125,10 @@ public class ClienteDAO extends DAO {
 //				query.setParameter("group", filter.getGroup());
 //			}
 //			
-//			// Login
-//			if (notEmpty(filter.getLogin())) {
-//				query.setParameter("login", filter.getLogin());
-//			}
+			// Login
+			if (notEmpty(filter.getLogin())) {
+				query.setParameter("login", filter.getLogin());
+			}
 			
 			resultado = query.getResultList();
 		} catch (PersistenceException pe) {
@@ -152,7 +152,7 @@ public class ClienteDAO extends DAO {
 
 		String jpql = "SELECT COUNT(*) FROM Cliente c WHERE c.login = :login ";
 		if (cliente.getId() != null) {
-			jpql += "AND u != :cliente ";
+			jpql += "AND c != :cliente ";
 		}
 
 		TypedQuery<Long> query = em.createQuery(jpql, Long.class);

@@ -13,6 +13,7 @@ import javax.inject.Inject;
 
 import filters.ClienteFilter;
 import model.Cliente;
+import model.Group;
 import resources.FaixaEtaria;
 import resources.Genero;
 import resources.UF;
@@ -101,5 +102,8 @@ public abstract class AbstractBean implements Serializable {
 	
 	public FaixaEtaria[] getFaixaEtaria() {
 		return FaixaEtaria.values();
+	}
+	public Group[] getGroups() {
+		return Group.values();
 	}
 }

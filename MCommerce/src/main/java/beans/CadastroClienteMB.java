@@ -7,6 +7,7 @@ import javax.inject.Named;
 
 import model.Cliente;
 import model.Endereco;
+import model.Group;
 import services.ClienteService;
 import services.ServiceDacException;
 
@@ -49,6 +50,7 @@ public class CadastroClienteMB extends AbstractBean{
 			if (isEdicaoDeUsuario()) {
 				clienteService.update(cliente, false);
 			} else {
+				cliente.setGroup(Group.CLIENTE);
 				clienteService.save(cliente);
 			}
 		} catch (ServiceDacException e) {

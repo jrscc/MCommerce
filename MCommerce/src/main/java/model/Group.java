@@ -2,7 +2,7 @@ package model;
 
 
 public enum Group {
-	ADMIN("Admin"), VISITANTE("Visitante");
+	ADMIN("Admin"), VISITANTE("Visitante"), CLIENTE("Cliente");
 	
 	private String nome;
 	
