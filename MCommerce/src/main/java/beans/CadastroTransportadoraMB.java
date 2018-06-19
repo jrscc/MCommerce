@@ -46,7 +46,7 @@ public class CadastroTransportadoraMB extends AbstractBean {
 
 		reportarMensagemDeSucesso("Transportadora '" + transportadora.getNomeFantasia() + "' saved");
 
-		return "index.xhtml?faces-redirect=true";
+		return EnderecoPaginas.PAGINA_PRINCIPAL;
 	}
 	
 	public boolean isEdicaoDeUsuario() {

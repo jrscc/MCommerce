@@ -150,16 +150,16 @@ public class ClienteDAO extends DAO {
 		
 		EntityManager em = getEntityManager();
 
-		String jpql = "SELECT COUNT(*) FROM User u WHERE u.login = :login ";
+		String jpql = "SELECT COUNT(*) FROM Cliente c WHERE c.login = :login ";
 		if (cliente.getId() != null) {
-			jpql += "AND u != :user ";
+			jpql += "AND u != :cliente ";
 		}
 
 		TypedQuery<Long> query = em.createQuery(jpql, Long.class);
 
 		query.setParameter("login", cliente.getLogin());
 		if (cliente.getId() != null) {
-			query.setParameter("user", cliente);
+			query.setParameter("cliente", cliente);
 		}
 		
 		Long count = query.getSingleResult();
@@ -167,9 +167,9 @@ public class ClienteDAO extends DAO {
 		
 	}
 	
-//	private boolean notEmpty(Object obj) {
-//		return obj != null;
-//	}
+	private boolean notEmpty(Object obj) {
+		return obj != null;
+	}
 	
 	private boolean notEmpty(String obj) {
 		return obj != null && !obj.trim().isEmpty();

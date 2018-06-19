@@ -45,4 +45,45 @@ public class ClienteFilter {
 				+ login + "]";
 	}
 
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public Date getBirthdayRangeBegin() {
+		return birthdayRangeBegin;
+	}
+
+	public void setBirthdayRangeBegin(Date birthdayRangeBegin) {
+		this.birthdayRangeBegin = birthdayRangeBegin;
+	}
+
+	public Date getBirthdayRangeEnd() {
+		return birthdayRangeEnd;
+	}
+
+	public void setBirthdayRangeEnd(Date birthdayRangeEnd) {
+		this.birthdayRangeEnd = birthdayRangeEnd;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+	
+
 }

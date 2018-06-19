@@ -4,6 +4,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
 import model.Endereco;
 import model.Fornecedor;
 import services.FornecedorService;
@@ -48,7 +49,7 @@ public class CadastroFornecedorMB extends AbstractBean{
 
 		reportarMensagemDeSucesso("Fornecedor '" + fornecedor.getNome() + "' saved");
 
-		return "index.xhtml?faces-redirect=true";
+		return EnderecoPaginas.PAGINA_PRINCIPAL;
 	}
 	
 	public void checarDisponibilidadeLogin() {

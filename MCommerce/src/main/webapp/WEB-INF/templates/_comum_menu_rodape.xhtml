@@ -17,59 +17,54 @@
 <h:body>
 
 	<div id="header">
-		<p:panel columns="1" style="width : 100%; height: 100px ;text-align:center" header="MCommerce" >
-			<p:inputText style="margin-right:2px; border-radius: 25px; width : 400px" placeholder="Search"/>
-            <p:commandButton type="button" icon="fa fa-search" />
+		<p:panel columns="1" style="width : 100%; height: 100px ;text-align:center" header="MCommerce">
+			<p:inputText id="search" style="margin-right:2px; border-radius: 25px; width : 400px" placeholder="Search" rendered="#{!menu.isUserInRole('ADMIN')}"/>
+            <p:commandButton type="button" icon="fa fa-search" rendered="#{!menu.isUserInRole('ADMIN')}"/>
 		</p:panel>
 		<h:form>  
-    <p:growl id="messages"/>
  
     <p:menubar>
     
-    	<p:menuitem value="Home" url="http://localhost:8080/Mcommerce/index.xhtml" icon="fa fa-home" />
+    	<p:menuitem value="Home" url="http://localhost:8080/Mcommerce/paginas/publico/index.xhtml" icon="fa fa-home" />
     	
-        <p:submenu label="Páginas AUX" icon="fa fa-file-text">
-                <p:menuitem value="Login Cadastro" url="http://localhost:8080/Mcommerce/loginCadastro.xhtml" icon="fa fa-user-plus"/>
-                <p:menuitem value="Recuperar Senha" url="http://localhost:8080/Mcommerce/recuperarSenha.xhtml" icon="fa fa-user-secret"/>
+        <p:submenu label="Cliente" icon="fa fa-user" rendered="#{menu.isUserInRole('ADMIN')}">
+             <p:menuitem value="Cadastrar Cliente" url="http://localhost:8080/Mcommerce/paginas/publico/cadastroCliente.xhtml" icon="fa fa-user-plus"/>
+             <p:menuitem value="Gerenciar Clientes" url="http://localhost:8080/Mcommerce/paginas/protegido/admin/gerenciarClientes.xhtml" icon="fa fa-server"/>
         </p:submenu>
  
-        <p:submenu label="Cliente" icon="fa fa-user">
-             <p:menuitem value="Cadastrar Cliente" url="http://localhost:8080/Mcommerce/cadastroCliente.xhtml" icon="fa fa-user-plus"/>
-             <p:menuitem value="Gerenciar Clientes" url="http://localhost:8080/Mcommerce/gerenciarClientes.xhtml" icon="fa fa-server"/>
+        <p:submenu label="Fornecedor" icon="fa fa-street-view" rendered="#{menu.isUserInRole('ADMIN')}">
+            <p:menuitem value="Cadastrar Fornecedor" url="http://localhost:8080/Mcommerce/paginas/protegido/admin/cadastroFornecedor.xhtml" icon="fa fa-user-plus"/>
+            <p:menuitem value="Gerenciar Fornecedores" url="http://localhost:8080/Mcommerce/paginas/protegido/admin/gerenciarFornecedores.xhtml" icon="fa fa-server"/>
         </p:submenu>
  
-        <p:submenu label="Fornecedor" icon="fa fa-street-view">
-            <p:menuitem value="Cadastrar Fornecedor" url="http://localhost:8080/Mcommerce/cadastroFornecedor.xhtml" icon="fa fa-user-plus"/>
-            <p:menuitem value="Gerenciar Fornecedores" url="http://localhost:8080/Mcommerce/gerenciarFornecedores.xhtml" icon="fa fa-server"/>
-        </p:submenu>
- 
-        <p:submenu label="Produto" icon="fa fa-gift">
-                <p:menuitem value="Cadastrar Produto" url="http://localhost:8080/Mcommerce/cadastroProduto.xhtml" icon="fa fa-gift" update="messages"/>
-                <p:menuitem value="Gerenciar Produtos" url="http://localhost:8080/Mcommerce/gerenciarProdutos.xhtml" icon="fa fa-server" update="messages"/>
+        <p:submenu label="Produto" icon="fa fa-gift" rendered="#{menu.isUserInRole('ADMIN')}">
+                <p:menuitem value="Cadastrar Produto" url="http://localhost:8080/Mcommerce/paginas/protegido/admin/cadastroProduto.xhtml" icon="fa fa-gift"/>
+                <p:menuitem value="Gerenciar Produtos" url="http://localhost:8080/Mcommerce/paginas/protegido/admin/gerenciarProdutos.xhtml" icon="fa fa-server"/>
         </p:submenu>
         
-        <p:submenu label="Pedido" icon="fa fa-shopping-cart">
-                <p:menuitem value="Gerenciar Pedidos" url="http://localhost:8080/Mcommerce/gerenciarPedidos.xhtml" icon="fa fa-server" update="messages"/>
-                <p:menuitem value="Acompanhar Pedido" url="http://localhost:8080/Mcommerce/acompanhamentoEntrega.xhtml" icon="fa fa-flag" update="messages"/>
+        <p:submenu label="Pedido" icon="fa fa-shopping-cart" rendered="#{menu.isUserInRole('ADMIN')}">
+                <p:menuitem value="Gerenciar Pedidos" url="http://localhost:8080/Mcommerce/paginas/protegido/admin/gerenciarPedidos.xhtml" icon="fa fa-server"/>
+                <p:menuitem value="Acompanhar Pedido" url="http://localhost:8080/Mcommerce/paginas/protegido/acompanhamentoEntrega.xhtml" icon="fa fa-flag"/>
         </p:submenu>
         
-        <p:submenu label="Transportadora" icon="fa fa-truck">
-                <p:menuitem value="cadastrar Transportadora" url="http://localhost:8080/Mcommerce/cadastroTransportadora.xhtml" icon="fa fa-truck " update="messages"/>
-                 <p:menuitem value="Gerir Transportadoras" url="http://localhost:8080/Mcommerce/gerenciarTransportadoras.xhtml" icon="fa fa-server" update="messages"/>
+        <p:submenu label="Transportadora" icon="fa fa-truck" rendered="#{menu.isUserInRole('ADMIN')}">
+                <p:menuitem value="cadastrar Transportadora" url="http://localhost:8080/Mcommerce/paginas/protegido/admin/cadastroTransportadora.xhtml" icon="fa fa-truck "/>
+                 <p:menuitem value="Gerir Transportadoras" url="http://localhost:8080/Mcommerce/paginas/protegido/admin/gerenciarTransportadoras.xhtml" icon="fa fa-server"/>
         </p:submenu>
         
-        <p:submenu label="Mensagens" icon="fa fa-envelope-o fa-xs" >
-                <p:menuitem value="Enviar Mensagem" onclick="PF('mensagemDialog').show()" icon="fa fa-paper-plane-o" update="messages"/>
+        <p:submenu label="Mensagens" icon="fa fa-envelope-o fa-xs" rendered="#{menu.isUserInRole('ADMIN')}">
+                <p:menuitem value="Enviar Mensagem" onclick="PF('mensagemDialog').show()" icon="fa fa-paper-plane-o"/>
         </p:submenu>
  
         <f:facet name="options">
         	<p:commandButton id="carrinho" action="carrinho.xhtml" value="Carrinho" icon="fa fa-shopping-cart"/>
-        	<p:splitButton value="Usuario" update="messages" icon="fa fa-user">
-        		<p:menuitem value="Meus Pedidos" icon="fa fa-shopping-cart" />
-        		<p:menuitem value="Meu Cadastro" icon="fa fa-list-alt" />
-        		<p:menuitem value="Mensagens" icon="fa fa-envelope-o fa-xs" />
-        		<p:menuitem value="Favoritos" icon="fa fa-heart" />
-        		<p:menuitem value="Sair" icon="fa fa-reply" />
+        	<p:splitButton value="Bem vindo #{menu.userLogin}" icon="fa fa-user">
+        		<p:menuitem value="Meus Pedidos" icon="fa fa-shopping-cart" rendered="#{menu.isUserInRole('CLIENTE')}"/>
+        		<p:menuitem value="Meu Cadastro" icon="fa fa-list-alt" rendered="#{menu.isUserInRole('CLIENTE')}"/>
+        		<p:menuitem value="Mensagens" icon="fa fa-envelope-o fa-xs" rendered="#{menu.isUserInRole('CLIENTE')}"/>
+        		<p:menuitem value="Favoritos" icon="fa fa-heart" rendered="#{menu.isUserInRole('CLIENTE')}"/>
+        		<p:menuitem value="Login/Cadastro" icon="fa fa-user-plus" url="http://localhost:8080/Mcommerce/paginas/protegido/redirectIndex.xhtml" rendered="#{!menu.isUserInRole('ADMIN')}"/>
+        		<p:menuitem value="Sair" icon="fa fa-sign-out" action="#{logout.efetuarLogout}" ajax="false"/>
     		</p:splitButton>
         </f:facet>
     </p:menubar>
@@ -83,7 +78,7 @@
     		<p:panelGrid columns="1" style="text-align: center">
     			<p:selectOneMenu id="destinatario" value="#{mensagemMB.cliente}" style="width:240px">
 						<f:selectItem itemLabel="Destinatário" itemValue="#{null}" />
-						<f:selectItems value="#{mensagemMB.clientes}" var="f" itemLabel="#{f.nome} #{f.sobrenome}" itemValue="#{f}" />
+						<f:selectItems value="#{mensagemMB.clientes}" var="f" itemLabel="'#{f.login}' #{f.nome} #{f.sobrenome} " itemValue="#{f}" />
 				</p:selectOneMenu>
     			<p:inputText id="titulo" value="#{mensagemMB.titulo}" placeholder="Titulo" style="width:280px" required="true"/>
     			<p:inputTextarea id="mensagem" value="#{mensagemMB.mensagem}" placeholder="Mensagem" cols="25" rows="8" required="true"/>

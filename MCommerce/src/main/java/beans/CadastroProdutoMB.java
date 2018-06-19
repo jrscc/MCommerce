@@ -72,7 +72,7 @@ public class CadastroProdutoMB extends AbstractBean{
 
 		reportarMensagemDeSucesso("Produto '" + produto.getNome() + "' saved");
 
-		return "index.xhtml?faces-redirect=true";
+		return EnderecoPaginas.PAGINA_PRINCIPAL;
 	}
 	
 	public List<Fornecedor> getFornecedores() {

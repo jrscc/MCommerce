@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -44,6 +45,10 @@ public class Cliente implements Serializable {
 	private String telefone;
 	@ElementCollection(fetch = FetchType.EAGER)
 	private List<String> mensagens = new ArrayList<>();
+	
+	@Column(name = "cliente_group")
+	@Enumerated(EnumType.STRING)
+	private Group group;
 	
 	public Integer getId() {
 		return id;
@@ -110,6 +115,12 @@ public class Cliente implements Serializable {
 	}
 	public void setMensagens(List<String> mensagens) {
 		this.mensagens = mensagens;
+	}
+	public Group getGroup() {
+		return group;
+	}
+	public void setGroup(Group group) {
+		this.group = group;
 	}
 	@Override
 	public int hashCode() {

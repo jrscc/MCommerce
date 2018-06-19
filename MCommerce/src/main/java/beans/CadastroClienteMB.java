@@ -4,6 +4,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
 import model.Cliente;
 import model.Endereco;
 import services.ClienteService;
@@ -57,7 +58,7 @@ public class CadastroClienteMB extends AbstractBean{
 
 		reportarMensagemDeSucesso("Cliente '" + cliente.getNome() + "' saved");
 
-		return "index.xhtml?faces-redirect=true";
+		return EnderecoPaginas.PAGINA_PRINCIPAL;
 	}
 	
 	public void checarDisponibilidadeLogin() {

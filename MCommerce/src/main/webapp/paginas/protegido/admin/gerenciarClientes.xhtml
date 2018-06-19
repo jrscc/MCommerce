@@ -49,9 +49,9 @@
 					<h:outputText value="#{cliente.endereco.estado}" />
 				</p:column>
 				<p:column headerText="Operations" width="270">
-					<p:button id="editCliente" outcome="cadastroCliente.xhtml" value="Editar" icon="fa fa-edit">
-						<f:param name="cliente" value="#{cliente.id}" />
-					</p:button>
+<!-- 					<p:button id="editCliente" outcome="cadastroCliente.xhtml" value="Editar" icon="fa fa-edit"> -->
+<!-- 						<f:param name="cliente" value="#{cliente.id}" /> -->
+<!-- 					</p:button> -->
 					<p:commandButton id="deleteCliente" value="Deletar" icon="fa fa-remove" action="#{gerenciarClientesMB.delete(cliente)}" >
 						<p:confirm header="Confirmação!" message="Quer mesmo deletar '#{cliente.nome} #{cliente.sobrenome}'?" icon="ui-icon-alert" />
 					</p:commandButton>
