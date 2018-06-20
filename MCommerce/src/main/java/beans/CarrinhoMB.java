@@ -14,7 +14,7 @@ public class CarrinhoMB  extends AbstractBean{
 
 	private static final long serialVersionUID = 2734303039770040365L;
 	
-	private Pedido pedido = null;
+	private Pedido pedido;
 	
 	@Inject
 	private PedidoService pedidoService;

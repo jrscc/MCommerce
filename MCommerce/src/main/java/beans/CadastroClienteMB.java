@@ -15,9 +15,9 @@ import services.ServiceDacException;
 @ViewScoped
 public class CadastroClienteMB extends AbstractBean{
 
-	private static final long serialVersionUID = -4840068614214735611L;
-
 	
+	private static final long serialVersionUID = -5576985608803639014L;
+
 	private Cliente cliente = null;
 	
 	@Inject

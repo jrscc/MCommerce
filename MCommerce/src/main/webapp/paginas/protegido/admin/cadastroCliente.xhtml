@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui">
+
+<ui:composition template="/WEB-INF/templates/_comum_menu_rodape.xhtml">
+
+	<f:metadata>
+		<o:viewParam name="cliente" value="#{cadastroClienteMB.cliente}" />
+		<f:viewAction action="#{cadastroClienteMB.init()}"/>
+	</f:metadata>
+	<ui:define name="content">
+	
+
+		<p:growl id="idMessages" showDetail="true" autoUpdate="true" severity="info" />
+		<p:messages id="idMessagesErrors" showDetail="true" autoUpdate="true" closable="true" severity="error" />
+		
+		<div align="center">
+			<h:form id="formCadastroCliente">
+				<p:panelGrid columns="3"
+					style="margin-top: 35px; margin-bottom: 35px; margin-left: 35px; margin-rigth: 35px;">
+					<p:fieldset legend="Dados pessoais">
+						<p:panelGrid columns="1" style="text-align: center;">
+							<p:inputText id="nome" value="#{cadastroClienteMB.cliente.nome}" placeholder="nome" size="30" required="true"/>
+							<p:inputText id="sobrenome" value="#{cadastroClienteMB.cliente.sobrenome}" placeholder="sobrenome" size="30" required="true"/>
+							<p:inputText id="cpf" value="#{cadastroClienteMB.cliente.CPF}" placeholder="CPF" size="30" required="true"/>
+							<p:calendar id="dataNascimento" value="#{cadastroClienteMB.cliente.dataDeNascimento}" placeholder="data de nascimento" size="30" required="true"/>
+							<p:panelGrid columns="2">
+								<p:outputLabel value="sexo:	" />
+								<p:selectOneRadio id="sexo" value="#{cadastroClienteMB.cliente.sexo}" required="true">
+									<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+									<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+								</p:selectOneRadio>
+							</p:panelGrid>
+
+						</p:panelGrid>
+					</p:fieldset>
+					<p:fieldset legend="Endereço" >
+						<p:panelGrid columns="1" style="text-align: center;">
+							<p:panelGrid columns="2" style="text-align: center;">
+								<p:inputText id="rua" value="#{cadastroClienteMB.cliente.endereco.rua}"  placeholder="rua" size="32" />
+								<p:inputText  id="numero" value="#{cadastroClienteMB.cliente.endereco.numero}" placeholder="Nº 00" size="4" />
+							</p:panelGrid>
+							<p:panelGrid columns="2" style="text-align: center;">
+							<p:inputText id="bairro" value="#{cadastroClienteMB.cliente.endereco.bairro}" placeholder="bairro" size="29" />
+							<p:inputText id="cep" value="#{cadastroClienteMB.cliente.endereco.CEP}" placeholder="CEP" size="7" />
+							</p:panelGrid>
+							<p:inputText id="complemento" value="#{cadastroClienteMB.cliente.endereco.complemento}" placeholder="complemento" size="44" />
+							<p:panelGrid columns="2" style="text-align: center;">
+								<p:inputText id="cidade" value="#{cadastroClienteMB.cliente.endereco.cidade}" placeholder="cidade" size="32" />
+								<p:selectOneMenu id="uf" value="#{cadastroClienteMB.cliente.endereco.estado}" label="Estado" required="true">
+									<f:selectItem  itemLabel="UF" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
+									<f:selectItems value="#{cadastroClienteMB.uf}" var="g" itemLabel="#{g.nome}" itemValue="#{g}" />
+								</p:selectOneMenu>
+							</p:panelGrid>
+
+						</p:panelGrid>
+					</p:fieldset>
+
+					<p:fieldset legend="Sobre sua conta">
+						<p:panelGrid columns="1" style="text-align: center;">
+							<p:inputText value="#{cadastroClienteMB.cliente.login}" placeholder="seu e-mail/login" size="30" required="true"/>
+							<p:password  id="password" value="#{cadastroClienteMB.cliente.password}" placeholder="senha" size="30" label="Password" match="confirmacaoPassword" feedback="true" required="true"/>
+							<p:password id="confirmacaoPassword" value="#{cadastroClienteMB.confirPassword}" placeholder="confirmar senha" size="30"  label="Confirm Password" feedback="true" required="true" />
+							<p:inputText value="#{cadastroClienteMB.cliente.telefone}" placeholder="seu telefone" size="30" required="true"/>
+							<p:commandButton value="Prosseguir" action="#{cadastroClienteMB.saveCliente}" update="@form" 
+								style="width: 300px; height:40px; margin-top:50" icon="fa fa-hand-o-right"/>
+						</p:panelGrid>
+					</p:fieldset>
+				</p:panelGrid>
+			</h:form>
+		</div>
+
+	</ui:define>
+</ui:composition>
+</html>

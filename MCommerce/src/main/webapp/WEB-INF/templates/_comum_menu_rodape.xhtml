@@ -54,10 +54,10 @@
         </p:submenu>
  
         <f:facet name="options">
-        	<p:commandButton id="carrinho" action="carrinho.xhtml" value="Carrinho" icon="fa fa-shopping-cart"/>
+        	<p:commandButton id="carrinho" action="#{menu.redirectCarrinho}" value="Carrinho" icon="fa fa-shopping-cart"/>
         	<p:splitButton value="Bem vindo #{menu.userLogin}" icon="fa fa-user">
         		<p:menuitem value="Meus Pedidos" icon="fa fa-shopping-cart" rendered="#{menu.isUserInRole('CLIENTE')}"/>
-        		<p:menuitem value="Meu Cadastro" icon="fa fa-list-alt" rendered="#{menu.isUserInRole('CLIENTE')}"/>
+        		<p:menuitem value="Meu Cadastro" icon="fa fa-list-alt" url="http://localhost:8080/Mcommerce/paginas/publico/cadastroCliente.xhtml?cliente=#{menu.getUsuarioLogado().id}" rendered="#{menu.isUserInRole('CLIENTE')}"/>
         		<p:menuitem value="Mensagens" icon="fa fa-envelope-o fa-xs" url="http://localhost:8080/Mcommerce/paginas/protegido/caixaDeEntrada.xhtml" rendered="#{menu.isUserInRole('CLIENTE')}"/>
         		<p:menuitem value="Favoritos" icon="fa fa-heart" rendered="#{menu.isUserInRole('CLIENTE')}"/>
         		<p:menuitem value="Login/Cadastro" icon="fa fa-user-plus" url="http://localhost:8080/Mcommerce/paginas/protegido/redirectIndex.xhtml" rendered="#{!menu.isUserInRole('ADMIN')}"/>

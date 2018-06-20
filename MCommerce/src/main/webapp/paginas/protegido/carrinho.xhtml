@@ -22,8 +22,11 @@
 				<p:column headerText="ID" width="60">
 					<h:outputText value="#{produto.id}" />
 				</p:column>
-				<p:column headerText="Quantidade" width="110">
-					<h:outputText value="#{produto.faixaEtaria}" />
+				<p:column headerText="Foto">
+					  <p:graphicImage library="images" name="#{produto.foto}" style="max-width:200px; max-height:180px; width: auto; height: auto;"/> 
+				</p:column>
+				<p:column headerText="QTD" width="60">
+					<h:outputText value="" />
 				</p:column>
 				<p:column headerText="Nome_Produto">
 					<h:outputText value="#{produto.nome}" />
@@ -31,17 +34,33 @@
 				<p:column headerText="Inf. Adicionais">
 					<h:outputText value="#{produto.informacoesAdicionais}" />
 				</p:column>
+				<p:column headerText="TAM" width="60">
+					<h:outputText value="" />
+				</p:column>
 				<p:column headerText="Preço">
 					<h:outputText value="#{produto.precoVenda}0 R$" />
 				</p:column>
-				
-				<p:column headerText="Operations" width="270">
-					<p:commandButton id="deleteProduto" value="Remover do carrinho" icon="fa fa-remove" action="#{gerenciarProdutosMB.delete(produto)}" >
+				<p:column headerText="Sub. Total">
+					<h:outputText value="#{produto.precoVenda}0 R$" />
+				</p:column>
+				<p:column headerText="Operations" width="150">
+					<p:commandButton id="deleteProduto" value="remover" icon="fa fa-trash-o" action="#{gerenciarProdutosMB.delete(produto)}" >
 						<p:confirm header="Confirmação!" message="Quer mesmo deletar '#{produto.nome}'?" icon="ui-icon-alert" />
 					</p:commandButton>
 				</p:column>
 			</p:dataTable>
 		</p:fieldset>
+		
+		<p:fieldset legend="Disposições gerais">
+			<p:panelGrid columns="1" header="OFERTAS EXCLUSIVAS" style="text-align:left" >
+				<p:outputLabel id="desconto" value="Desconto: "/>
+				<p:outputLabel id="frete" value="Frete: "/>
+				<p:outputLabel id="credito" value="Crédito: "/>
+				<p:outputLabel id="total" value="Total: "/>
+				<p:commandButton id="btnConcluirPedido" value="Concluir Pedido"/>
+			</p:panelGrid>
+		</p:fieldset>
+		
 		</h:form>
 		<p:confirmDialog id="confirmDialog" global="true" showEffect="fade" hideEffect="fade">
 	        <p:commandButton id="confirmYes" value="Yes" styleClass="ui-confirmdialog-yes" icon="fa fa-remove" />

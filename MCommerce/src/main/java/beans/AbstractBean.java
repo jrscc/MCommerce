@@ -14,6 +14,7 @@ import javax.inject.Inject;
 import filters.ClienteFilter;
 import model.Cliente;
 import model.Group;
+import model.Produto;
 import resources.FaixaEtaria;
 import resources.Genero;
 import resources.UF;
@@ -91,7 +92,10 @@ public abstract class AbstractBean implements Serializable {
 		
 		return null;
 	}
-	
+	public String redirectCarrinho() {
+		return EnderecoPaginas.PAGINA_CARRINHO;
+	}
+
 	public UF[] getUf() {
 		return UF.values();
 	}

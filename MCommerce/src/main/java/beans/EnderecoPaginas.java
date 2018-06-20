@@ -15,5 +15,7 @@ public final class EnderecoPaginas {
 	public static final String PAGINA_ERROR_CODE_500 = "/paginas/publico/500.xhtml" + REDIRECT_TRUE;
 	
 	public static final String PAGINA_CADASTRO_CLIENTE = "/paginas/publico/cadastroCliente.xhtml" + REDIRECT_TRUE;
+	
+	public static final String PAGINA_CARRINHO= "/paginas/protegido/carrinho.xhtml" + REDIRECT_TRUE;
 
 }

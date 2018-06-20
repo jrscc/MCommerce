@@ -59,8 +59,8 @@ public class GerenciarClientesMB extends AbstractBean {
 		return "index?faces-redirect=true";
 	}
 	
-	public String editRedirect(String i) {
-		return EnderecoPaginas.PAGINA_CADASTRO_CLIENTE+"cliente = " + i;
+	public String editRedirect() {
+		return EnderecoPaginas.PAGINA_CADASTRO_CLIENTE+"cliente" +"=1";
 	}
 
 	public List<Cliente> getClientes() {

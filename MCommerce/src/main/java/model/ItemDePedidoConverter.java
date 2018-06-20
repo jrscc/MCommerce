@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import services.ItemDePedidoService;
 import services.ServiceDacException;
 
-@FacesConverter(forClass = Cliente.class)
+@FacesConverter(forClass = ItemDePedido.class)
 public class ItemDePedidoConverter implements Converter{
 	
 	@Inject

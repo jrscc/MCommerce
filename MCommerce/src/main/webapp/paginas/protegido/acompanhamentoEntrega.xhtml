@@ -7,20 +7,42 @@
 
 <ui:composition template="/WEB-INF/templates/_comum_menu_rodape.xhtml">
 
-	
+
 
 	<ui:define name="content">
+		<p:fieldset legend="Detalhes do acompanhamento" style="margin-right: 35px; margin-left: 35px; margin-top: 15px; margin-bottom: 15px;">
+			<p:panelGrid columns="2" header="OFERTAS EXCLUSIVAS" style="text-align:left" >
+				<p:outputLabel id="nPedido" value="Numero do Pedido: "/>
+				<p:outputLabel id="nPedidoValue" value=" "/>
+				<p:outputLabel id="tipo" value="Tipo de entrega: "/>
+				<p:outputLabel id="tipoValue" value="ENTREGA NORMAL"/>
+				<p:outputLabel id="rua" value="Rua: "/>
+				<p:outputLabel id="ruaValue" value=" "/>
+				<p:outputLabel id="numero" value="nº: "/>
+				<p:outputLabel id="numeroValue" value=" "/>
+				<p:outputLabel id="bairro" value="Bairro: "/>
+				<p:outputLabel id="bairroValue" value=" "/>
+				<p:outputLabel id="cidade" value="Cidade: "/>
+				<p:outputLabel id="cidadeValue" value=" "/>
+				<p:outputLabel id="estado" value="Estado: "/>
+				<p:outputLabel id="estadoValue" value=" "/>
+				<p:outputLabel id="transportadora" value="Transportadora: "/>
+				<p:outputLabel id="transportadoraValue" value=" "/>
+				<p:outputLabel id="codRastreio" value="Código de rastreio: "/>
+				<p:outputLabel id="codRastreioValue" value=" "/>
+			</p:panelGrid>
+		</p:fieldset>
 
-	<p:fieldset legend="Acompanhamento de Pedido" style="margin-right: 35px; margin-left: 35px; margin-top: 15px; margin-bottom: 15px;">
-		<p:steps activeIndex="1" styleClass="custom" readonly="false">
-			<p:menuitem value="Personal" url="#" />
-			<p:menuitem value="Seat Selection" url="#" />
-			<p:menuitem value="Payment" url="#" />
-			<p:menuitem value="Confirmation" url="#" />
-		</p:steps>
-		<p:outputLabel value=" ."></p:outputLabel>
-	</p:fieldset>
-		
+		<p:fieldset legend="Acompanhamento de pedido" style="margin-right: 35px; margin-left: 35px; margin-top: 15px; margin-bottom: 15px;">
+			<p:steps activeIndex="1" styleClass="custom" readonly="false">
+				<p:menuitem value="Pedido realizado" url="#" />
+				<p:menuitem value="Pagamento aprovado" url="#" />
+				<p:menuitem value="Item em transporte" url="#" />
+				<p:menuitem value="Entrega realizada" url="#" />
+			</p:steps>
+			<p:outputLabel value=" ."></p:outputLabel>
+		</p:fieldset>
+
 		<style type="text/css">
 .ui-steps .ui-steps-item {
 	width: 24%;
@@ -54,10 +76,10 @@
 }
 </style>
 
-		
+
 	</ui:define>
-	
-	
-	
+
+
+
 </ui:composition>
 </html>

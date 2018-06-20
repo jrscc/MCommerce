@@ -22,6 +22,8 @@ public class IndexMB extends AbstractBean{
 	
 	private List<Produto> produtos;
 	
+	private Produto selecionado;
+	
 	private List<String> images;
 	
 	@Inject
@@ -77,4 +79,12 @@ public class IndexMB extends AbstractBean{
 		this.produtoService = produtoService;
 	}
 
+	public Produto getSelecionado() {
+		return selecionado;
+	}
+
+	public void setSelecionado(Produto selecionado) {
+		this.selecionado = selecionado;
+	}
+	
 }
