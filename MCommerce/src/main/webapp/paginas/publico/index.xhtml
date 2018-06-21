@@ -34,15 +34,15 @@
  
  				<h:outputText value="#{produto.nome} - #{produto.informacoesAdicionais}" />
  				<h:panelGrid columns="3" style="width:100%">
- 				<p:spinner id="qtd" value="" size="1" stepFactor="1" placeholder="QTD"/>
- 				<p:selectOneMenu id="tamanho" value="" style="width: 50px;">
+ 				<p:spinner id="qtd" size="1" stepFactor="1" placeholder="QTD"/>
+ 				<p:selectOneMenu id="tamanho" style="width: 50px;" >
 						<f:selectItem itemLabel="TAM" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
 						<f:selectItems value="#{produto.tamanhos}" var="p" itemLabel="#{p} " itemValue="#{p}" />
 				</p:selectOneMenu>
                 <h:outputText value="#{produto.precoVenda}0 R$" />
 				</h:panelGrid>
-                <p:commandButton value="Comprar" icon="fa fa-cart-plus"/>
-                <p:commandLink value="+ Adicionar ao carrinho" icon="fa fa-cart-plus"/>
+                <p:commandButton value="Comprar" action="#{carrinhoMB.comprar(produto)}" icon="fa fa-cart-plus"/>
+                <p:commandLink value="+ Adicionar ao carrinho" action="#{carrinhoMB.adicionarAoCarrinho(produto)}" icon="fa fa-cart-plus"/>
  
             </h:panelGrid>
         </p:panel>

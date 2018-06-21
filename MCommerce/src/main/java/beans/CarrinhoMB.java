@@ -1,10 +1,15 @@
 package beans;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import model.ItemDePedido;
 import model.Pedido;
+import model.Produto;
 import services.PedidoService;
 import services.ServiceDacException;
 
@@ -24,6 +29,34 @@ public class CarrinhoMB  extends AbstractBean{
 		
 		if (pedido == null) {
 			pedido = new Pedido();
+		}
+	}
+	public void adicionarAoCarrinho(Produto produto) {
+
+		ItemDePedido item = new ItemDePedido();
+		item.setProduto(produto);
+//		item.setQuantidade(qtd);
+//		item.setTamanho(tam);
+		
+		pedido.getItens().add(item);
+		
+		reportarMensagemDeSucesso("Produto '" + produto.getNome() + "' adicionado ao carrinho");
+	}
+	public String comprar(Produto p) {
+		adicionarAoCarrinho(p);
+		
+		return redirectCarrinho();
+	}
+	
+	
+	public void removerDoCarrinho(ItemDePedido i){
+		List<ItemDePedido> itens = pedido.getItens();
+		int indice = 0;
+		for(ItemDePedido item: itens) {
+			if(i.getProduto().getId().equals(i.getProduto().getId())) {
+				pedido.getItens().remove(indice);
+			}
+			indice++;
 		}
 	}
 	

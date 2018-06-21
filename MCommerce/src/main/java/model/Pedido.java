@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -27,7 +28,7 @@ public class Pedido {
 	private Pagamento pagamento;
 	private Boolean entregue;
 	@OneToMany
-	private List<ItemDePedido> itens;
+	private List<ItemDePedido> itens = new ArrayList<ItemDePedido>();
 	
 	public Integer getId() {
 		return id;
@@ -48,7 +49,12 @@ public class Pedido {
 		this.itens = itens;
 	}
 	public double getValorTotal() {
-		return valorTotal;
+		double total = 0;
+		for(ItemDePedido item : itens) {
+			total += item.getSubTotal();
+		}
+		
+		return total;
 	}
 	public Date getDataDeEntrega() {
 		return dataDeEntrega;

@@ -1,11 +1,7 @@
 package model;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,8 +18,7 @@ public class ItemDePedido {
 	private Produto produto;
 	private double subTotal;
 	
-	@ElementCollection(fetch = FetchType.LAZY)
-	private List<String> tamanhosSelecionados;
+	private String tamanho;
 	
 	public Integer getId() {
 		return id;
@@ -31,11 +26,11 @@ public class ItemDePedido {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public List<String> getTamanhos() {
-		return tamanhosSelecionados;
+	public String getTamanho() {
+		return tamanho;
 	}
-	public void setTamanhos(List<String> tamanhosSelecionados) {
-		this.tamanhosSelecionados = tamanhosSelecionados;
+	public void setTamanho(String tamanho) {
+		this.tamanho = tamanho;
 	}
 	public int getQuantidade() {
 		return quantidade;
@@ -50,7 +45,8 @@ public class ItemDePedido {
 		this.produto = produto;
 	}
 	public double getSubTotal() {
-		return subTotal;
+		double result = produto.getPrecoVenda() * quantidade;
+		return result;
 	}
 	public void setSubTotal(double subTotal) {
 		this.subTotal = subTotal;
@@ -65,7 +61,6 @@ public class ItemDePedido {
 		long temp;
 		temp = Double.doubleToLongBits(subTotal);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((tamanhosSelecionados == null) ? 0 : tamanhosSelecionados.hashCode());
 		return result;
 	}
 	@Override
@@ -90,11 +85,6 @@ public class ItemDePedido {
 		if (quantidade != other.quantidade)
 			return false;
 		if (Double.doubleToLongBits(subTotal) != Double.doubleToLongBits(other.subTotal))
-			return false;
-		if (tamanhosSelecionados == null) {
-			if (other.tamanhosSelecionados != null)
-				return false;
-		} else if (!tamanhosSelecionados.equals(other.tamanhosSelecionados))
 			return false;
 		return true;
 	}

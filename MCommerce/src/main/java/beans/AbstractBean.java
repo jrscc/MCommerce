@@ -3,18 +3,15 @@ package beans;
 import java.io.Serializable;
 import java.security.Principal;
 import java.util.List;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.application.FacesMessage.Severity;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.context.Flash;
 import javax.inject.Inject;
-
 import filters.ClienteFilter;
 import model.Cliente;
 import model.Group;
-import model.Produto;
 import resources.FaixaEtaria;
 import resources.Genero;
 import resources.UF;

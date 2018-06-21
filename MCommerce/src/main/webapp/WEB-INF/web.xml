@@ -23,7 +23,7 @@
   </context-param>
   <context-param>
     <param-name>primefaces.THEME</param-name>
-    <param-value>dot-luv</param-value>
+    <param-value>blitzer</param-value>
 <!--     dot-luv -->
   </context-param>
   <error-page>

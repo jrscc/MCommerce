@@ -14,53 +14,77 @@
 		
 		<h:form id="form">
 		<p:fieldset legend="Carrinho">
-			<p:dataTable id="dataTableProdutos" var="produto" value="#{gerenciarProdutosMB.produtos}" emptyMessage="Nenhum registro encontrado." 
+			<p:dataTable id="dataTableProdutos" var="item" value="#{carrinhoMB.pedido.itens}" emptyMessage="Nenhum registro encontrado." 
 					rows="5" 
 					paginator="true" paginatorAlwaysVisible="false"
 					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="5,10,15">
 				<p:column headerText="ID" width="60">
-					<h:outputText value="#{produto.id}" />
+					<h:outputText value="#{item.produto.id}" />
 				</p:column>
 				<p:column headerText="Foto">
-					  <p:graphicImage library="images" name="#{produto.foto}" style="max-width:200px; max-height:180px; width: auto; height: auto;"/> 
+					  <p:graphicImage library="images" name="#{item.produto.foto}" style="max-width:200px; max-height:180px; width: auto; height: auto;"/> 
 				</p:column>
 				<p:column headerText="QTD" width="60">
-					<h:outputText value="" />
+				<p:spinner id="qtd" value="#{item.quantidade}" size="1" stepFactor="1" placeholder="QTD" >
+					<p:ajax update=":form" ignoreAutoUpdate="true"/>
+<!-- 					<p:ajax update=":formCriarNovoUsuarioVisitante:city" listener="#{criarUserVisitante.loadCities()}" ignoreAutoUpdate="true"/> -->
+				</p:spinner>
 				</p:column>
 				<p:column headerText="Nome_Produto">
-					<h:outputText value="#{produto.nome}" />
+					<h:outputText value="#{item.produto.nome}" />
 				</p:column>
 				<p:column headerText="Inf. Adicionais">
-					<h:outputText value="#{produto.informacoesAdicionais}" />
+					<h:outputText value="#{item.produto.informacoesAdicionais}" />
 				</p:column>
-				<p:column headerText="TAM" width="60">
-					<h:outputText value="" />
+				<p:column headerText="TAM" width="80">
+				<p:selectOneMenu id="tamanho" style="width: 50px;" >
+						<f:selectItem itemLabel="TAM" itemValue="#{null}" noSelectionOption="true" itemDisabled="true" />
+						<f:selectItems value="#{item.produto.tamanhos}" var="p" itemLabel="#{p} " itemValue="#{p}" />
+				</p:selectOneMenu>
 				</p:column>
 				<p:column headerText="Preço">
-					<h:outputText value="#{produto.precoVenda}0 R$" />
+					<h:outputText value="#{item.produto.precoVenda}0 R$" />
 				</p:column>
 				<p:column headerText="Sub. Total">
-					<h:outputText value="#{produto.precoVenda}0 R$" />
+					<h:outputText value="#{item.subTotal}0 R$" />
 				</p:column>
 				<p:column headerText="Operations" width="150">
-					<p:commandButton id="deleteProduto" value="remover" icon="fa fa-trash-o" action="#{gerenciarProdutosMB.delete(produto)}" >
+					<p:commandButton id="deleteProduto" value="remover" icon="fa fa-trash-o" action="#{carrinhoMB.removerDoCarrinho(item)}" update="@form">
 						<p:confirm header="Confirmação!" message="Quer mesmo deletar '#{produto.nome}'?" icon="ui-icon-alert" />
 					</p:commandButton>
 				</p:column>
 			</p:dataTable>
 		</p:fieldset>
-		
-		<p:fieldset legend="Disposições gerais">
-			<p:panelGrid columns="1" header="OFERTAS EXCLUSIVAS" style="text-align:left" >
-				<p:outputLabel id="desconto" value="Desconto: "/>
-				<p:outputLabel id="frete" value="Frete: "/>
-				<p:outputLabel id="credito" value="Crédito: "/>
-				<p:outputLabel id="total" value="Total: "/>
-				<p:commandButton id="btnConcluirPedido" value="Concluir Pedido"/>
+		<div align="center" style="margin-top: 15px; margin-bottom: 15px;">
+		<p:panel>
+		<p:panelGrid columns="2" header="OFERTAS EXCLUSIVAS" style="text-align:left" >
+		<p:fieldset legend="Dados de pagamento em cartão">
+			<p:panelGrid columns="2" header="DADOS DO CARTÃO" style="text-align:left" >
+				<p:outputLabel id="titular" value="Titular do cartão: "/>
+				<p:inputText />
+				<p:outputLabel id="dataDeValidade" value="Data de validade"/>
+				<p:inputText />
+				<p:outputLabel id="cvv" value="CVV: "/>
+				<p:inputText />
+				<p:outputLabel id="freteCartão" value="Frete: FRETE GRATIS"/>
+				<p:outputLabel id="totalCartao" value="Total: #{carrinhoMB.pedido.valorTotal}0 R$"/>
+				<p:outputLabel/>
+				<p:commandButton id="btnConcluirPedidoCartao" value="Pagamento com cartão"/>
 			</p:panelGrid>
 		</p:fieldset>
-		
+		<p:fieldset legend="Pagamento em boleto">
+			<p:panelGrid columns="1" header="OFERTAS EXCLUSIVAS" style="text-align:left" >
+				<p:outputLabel id="desconto" value="Desconto: 0"/>
+				<p:outputLabel id="frete" value="Frete: FRETE GRATIS"/>
+				<p:outputLabel id="credito" value="Crédito: 0"/>
+				<p:outputLabel id="total" value="Total: #{carrinhoMB.pedido.valorTotal}0 R$"/>
+				<p:commandButton id="btnGerarBoleto" value="Gerar boleto de pagamento"/>
+			</p:panelGrid>
+		</p:fieldset>
+		</p:panelGrid>
+		</p:panel>
+		</div>
 		</h:form>
 		<p:confirmDialog id="confirmDialog" global="true" showEffect="fade" hideEffect="fade">
 	        <p:commandButton id="confirmYes" value="Yes" styleClass="ui-confirmdialog-yes" icon="fa fa-remove" />
